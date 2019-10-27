@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MhdKe</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_app">TIKET</string>
+    <string name="tiket_about_short_info">Ticket je aplikácia, s ktorou je nákup lístka rýchly a jednoduchý. Všetko máte
+        pod palcom na jeden klik!
+    </string>
+    <string name="gdpr_title">Zásady ochrany osobných údajov GDPR</string>
+    <string name="allow_access_sms">K použivaniu aplikáce potrebujeme povoliť prístup k posielaniu SMS správ.</string>
+    <string name="allow_access">Povoliť prístup</string>
+    <string name="close_app">Zavrieť aplikáciu</string>
+    <string name="oops_text">Šmaria! Obávam sa, že bez povolenia prístupu k SMS nemôže aplikácia fungovať.</string>
 </resources>
