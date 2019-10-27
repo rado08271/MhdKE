@@ -12,4 +12,7 @@
     <string name="allow_access">Povoliť prístup</string>
     <string name="close_app">Zavrieť aplikáciu</string>
     <string name="oops_text">Šmaria! Obávam sa, že bez povolenia prístupu k SMS nemôže aplikácia fungovať.</string>
+    <string name="ticket_buy">Kúpiť</string>
+    <string name="ticket_sms_send">Stlačením tlačidla bude odoslaná prázdna SMS na tel. číslo 1166.</string>
+    <string name="ticket_sms_price">Cena SMS: 1,20 EUR</string>
 </resources>

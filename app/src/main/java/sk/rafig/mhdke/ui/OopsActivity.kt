@@ -1,7 +1,8 @@
-package sk.rafig.mhdke
+package sk.rafig.mhdke.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import sk.rafig.mhdke.R
 
 class OopsActivity : AppCompatActivity() {
 

@@ -9,7 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-        <activity android:name=".OopsActivity">
+        <activity android:name=".ui.OopsActivity">
         </activity>
         <activity android:name=".ui.LegalActivity">
         </activity>
