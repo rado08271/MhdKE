@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -83,6 +84,8 @@ dependencies {
     //room
     implementation "androidx.room:room-runtime:2.2.1"
     annotationProcessor "androidx.room:room-compiler:2.2.1" // For Kotlin use kapt instead of annotationProcessor
+    kapt 'android.arch.persistence.room:compiler:2.2.1'
+
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.2.1"
     // optional - RxJava support for Room
