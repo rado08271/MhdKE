@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "Users")
+@Entity(tableName = "users")
 data class User (
 
     @PrimaryKey
@@ -13,5 +13,9 @@ data class User (
     val id: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "username")
-    val userName: String
+    val userName: String,
+
+    @ColumnInfo(name = "tickets")
+    val tickets: List<Ticket>
+
 )

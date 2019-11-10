@@ -12,16 +12,17 @@ import sk.rafig.mhdke.model.User
 
 object UserFirebase: UserService {
     private val userReference = FirebaseDatabase.getInstance().getReference("user")
-    private lateinit var user: User
+    private var user = User(id="ERROR", userName = "", tickets = emptyList())
+
 
     override fun addUser(user: User) {
         userReference.child(user.id).setValue(user)
     }
 
     override fun getUser(id: String): User {
+
         userReference.child(id).addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
-                user = User(id="ERROR", userName = "")
             }
 
             override fun onDataChange(p0: DataSnapshot) {
