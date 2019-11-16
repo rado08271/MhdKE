@@ -8,24 +8,22 @@ import androidx.lifecycle.ViewModelProviders
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
-import org.hotovo.mhdke.ui.WelcomeActivity
 import sk.rafig.mhdke.R
-import sk.rafig.mhdke.model.User
-import sk.rafig.mhdke.viewmodel.LoadingViewModel
+import sk.rafig.mhdke.viewmodel.SplashViewModel
+import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
 
-class LoadingActivity : AppCompatActivity() {
+class SplashActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: LoadingViewModel
-
+    private lateinit var viewModel: SplashViewModel
     private val disposable = CompositeDisposable()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_loading)
+        setContentView(R.layout.activity_splash)
 
-        viewModel = ViewModelProviders.of(this).get(LoadingViewModel::class.java)
-        viewModel.setContext(applicationContext)
+        viewModel = ViewModelProviders.of(this, ViewModelFactory(application))
+            .get(SplashViewModel::class.java)
     }
 
     override fun onStart() {
@@ -37,6 +35,7 @@ class LoadingActivity : AppCompatActivity() {
             .subscribe( {startActivity(Intent(applicationContext, WelcomeActivity::class.java))},
                 {generateUser()}
             ))
+        viewModel.splash()
     }
 
     fun generateUser(){
