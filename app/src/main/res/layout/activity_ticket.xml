@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="72dp"
-        tools:context=".ui.TicketActivity">
+        tools:context=".ui.TicketActivity" tools:layout_editor_absoluteX="72dp">
     <include
             android:id="@+id/ticket_logo"
             layout="@layout/toolbar"
@@ -32,7 +32,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ticket_logo">
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/ticket_logo">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/buy_ticket"
@@ -97,7 +97,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_width="212dp"
-                android:layout_height="212dp" app:layout_constraintHorizontal_bias="0.0"
+                android:layout_height="212dp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintVertical_bias="1.0"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -106,9 +107,8 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            app:layout_constraintTop_toBottomOf="@+id/pulse_animation"
             android:layout_marginBottom="100dp"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent" android:id="@+id/linearLayout">
         <TextView
                 android:textAlignment="center"
                 android:id="@+id/ticket_send_sms_text"
@@ -127,6 +127,15 @@
                 android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+    <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/pulse_animation"
+            android:layout_marginEnd="8dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

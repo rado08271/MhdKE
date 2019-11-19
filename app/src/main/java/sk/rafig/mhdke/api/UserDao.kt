@@ -1,5 +1,6 @@
 package sk.rafig.mhdke.api
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -13,8 +14,8 @@ import sk.rafig.mhdke.model.User
 interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun addUser(user: User): Completable
+    suspend fun addUser(user: User)
 
-    @Query("SELECT * FROM Users WHERE userId = :id")
-    fun getUser(id: String): Single<User>
+    @Query("SELECT * FROM user WHERE userId = :id")
+    fun getUser(id: Int): LiveData<User>
 }

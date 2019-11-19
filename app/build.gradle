@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -10,11 +11,20 @@ android {
         applicationId "sk.rafig.mhdke"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 1
+        versionCode 2
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "plant-les-v$versionName.$versionCode")
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
+
+        packagingOptions {
+            exclude 'META-INF/atomicfu.kotlin_module'
+        }
     }
     buildTypes {
         release {
@@ -22,6 +32,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
@@ -34,6 +45,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//    testImplementation "androidx.arch.core:core-testing:2.2.1"
 
     //gson
     implementation 'com.google.code.gson:gson:2.8.5'
@@ -56,41 +68,49 @@ dependencies {
 //    kapt 'com.google.dagger:dagger-compiler:2.16'
 //    kapt 'com.google.dagger:dagger-android-processor:2.16'
 
-    //lifecycle = https://developer.android.com/jetpack/androidx/releases/lifecycle
-    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.0.0"
+
     // For Kotlin use kapt instead of annotationProcessor
     // ViewModel and LiveData
-    implementation "androidx.lifecycle:lifecycle-extensions:2.0.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
 //    implementation "androidx.lifecycle:lifecycle-extensions-ktx:2.0.0"
+
     // AndroidX libraries use this lightweight import for Lifecycle
-    implementation "androidx.lifecycle:lifecycle-runtime:2.0.0"
+    implementation "androidx.lifecycle:lifecycle-runtime:2.1.0"
+
     // ReactiveStreams support
-    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.0.0" // For Kotlin use lifecycle-reactivestreams-ktx
-    // test for LiveData
-    testImplementation "androidx.arch.core:core-testing:2.0.1"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.1.0" // For Kotlin use lifecycle-reactivestreams-ktx
+
 
     //RXjava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
 
     //kotlin coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0-RC2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
-    //room
+    // Room components
     implementation "androidx.room:room-runtime:2.2.1"
-    annotationProcessor "androidx.room:room-compiler:2.2.1" // For Kotlin use kapt instead of annotationProcessor
-    // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:2.2.1"
-    // optional - RxJava support for Room
-    implementation "androidx.room:room-rxjava2:2.2.1"
-    // optional - Guava support for Room, including Optional and ListenableFuture
-    implementation "androidx.room:room-guava:2.2.1"
-    // Test helpers
-    testImplementation "androidx.room:room-testing:2.2.1"
+    kapt "androidx.room:room-compiler:2.2.1"
+    androidTestImplementation "androidx.room:room-testing:2.2.1"
+
+    // Lifecycle components
+    //lifecycle = https://developer.android.com/jetpack/androidx/releases/lifecycle
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
+    kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    //  Coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+
+    // UI
+    implementation "com.google.android.material:material:1.0.0"
 
     // dexter
     implementation 'com.karumi:dexter:6.0.0'

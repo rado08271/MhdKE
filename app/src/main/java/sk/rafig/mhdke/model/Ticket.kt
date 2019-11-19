@@ -5,8 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-
-@Entity(tableName = "Tickets")
 data class Ticket (
     @PrimaryKey
     @ColumnInfo(name = "ticketId")

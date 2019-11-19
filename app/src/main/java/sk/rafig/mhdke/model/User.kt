@@ -5,13 +5,17 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "Users")
+@Entity
 data class User (
 
     @PrimaryKey
     @ColumnInfo(name = "userId")
-    val id: String = UUID.randomUUID().toString(),
+//    val id: String = UUID.randomUUID().toString(),
+    val id: Int = (Math.random()*100).toInt(),
 
     @ColumnInfo(name = "username")
     val userName: String
+
+//    @ColumnInfo(name = " ticket_list")
+//    val tickets: List<Ticket>
 )
