@@ -20,13 +20,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-        <receiver android:name=".api.sms.SmsReciever"
+        <receiver android:name=".api.sms.SmsReciever"/>
         <activity
-                android:theme="@style/AppTheme"
                 android:name=".ui.OopsActivity">
         </activity>
         <activity
-                android:theme="@style/AppTheme"
                 android:name=".ui.LegalActivity">
         </activity>
         <activity android:name=".ui.SplashActivity">
@@ -37,11 +35,9 @@
             </intent-filter>
         </activity>
         <activity
-                android:theme="@style/AppTheme"
                 android:name=".ui.HistoryActivity">
         </activity>
         <activity
-                android:theme="@style/AppTheme"
                 android:name=".ui.TicketActivity">
         </activity>
         <activity android:name=".ui.AllowActivity">

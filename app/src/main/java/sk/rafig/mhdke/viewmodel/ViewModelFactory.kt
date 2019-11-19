@@ -20,21 +20,21 @@ class ViewModelFactory(val application: Application): ViewModelProvider.Factory 
                 WelcomeViewModel(application) as T
 
             modelClass.isAssignableFrom(AllowViewModel::class.java) ->
-                AllowViewModel() as T
+                AllowViewModel(application) as T
 
             modelClass.isAssignableFrom(HistoryViewModel::class.java) ->
-                HistoryViewModel() as T
+                HistoryViewModel(application) as T
 
             modelClass.isAssignableFrom(TicketPreviewViewModel::class.java) ->
-                TicketPreviewViewModel() as T
+                TicketPreviewViewModel(application) as T
 
             modelClass.isAssignableFrom(TicketViewModel::class.java) ->
-                TicketViewModel() as T
+                TicketViewModel(application) as T
 
             modelClass.isAssignableFrom(LegalViewModel::class.java) ->
                 LegalViewModel(application) as T
 
-            else -> throw IllegalArgumentException("Unknown Viewmodel class!")
+            else -> throw IllegalArgumentException("Unknown Viewmodel class!") as Throwable
         }
     }
 }

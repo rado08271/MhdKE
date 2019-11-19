@@ -5,6 +5,7 @@ import sk.rafig.mhdke.api.UserDao
 import sk.rafig.mhdke.api.UsersDatabase
 
 object Injection {
+    //instead use dagger!!!
     fun proviceUserDataSource(context: Context): UserDao {
         val database = UsersDatabase.getInstance(context)
         return database.userDao()
