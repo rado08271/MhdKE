@@ -50,11 +50,7 @@ class AllowActivity : AppCompatActivity() {
                     override fun onPermissionGranted(response: PermissionGrantedResponse?) {
                         startActivity(Intent(applicationContext, TicketActivity::class.java))
                     }
-
-                    override fun onPermissionRationaleShouldBeShown( permission: PermissionRequest?, token: PermissionToken?) {
-
-                    }
-
+                    override fun onPermissionRationaleShouldBeShown( permission: PermissionRequest?, token: PermissionToken?) {                    }
                     override fun onPermissionDenied(response: PermissionDeniedResponse?) {
                         startActivity(Intent(applicationContext, OopsActivity::class.java))
                     }

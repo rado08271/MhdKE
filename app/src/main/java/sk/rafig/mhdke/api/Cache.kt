@@ -28,11 +28,26 @@ object Cache {
         return true
     }
 
+    fun addValueToCache(id: String, value: String, application: Application): Boolean{
+        val sp = application.getSharedPreferences(TIKET_VALUE, Context.MODE_PRIVATE) ?: return false
+
+        with(sp.edit()) {
+            putString(id, value)
+            apply()
+        }
+
+        return true
+    }
+
     fun getBoolean(id: String, application: Application): Boolean {
         return application.getSharedPreferences(TIKET_VALUE, Context.MODE_PRIVATE).getBoolean(id, false)
     }
 
     fun getInt(id: String, application: Application): Int {
         return application.getSharedPreferences(TIKET_VALUE, Context.MODE_PRIVATE).getInt(id, -1)
+    }
+
+    fun getString(id: String, application: Application): String {
+        return application.getSharedPreferences(TIKET_VALUE, Context.MODE_PRIVATE).getString(id, "ERROR")!!
     }
 }

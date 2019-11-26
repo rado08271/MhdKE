@@ -18,6 +18,7 @@ import sk.rafig.mhdke.api.UsersDatabase
 import sk.rafig.mhdke.di.Injection
 import sk.rafig.mhdke.model.User
 import sk.rafig.mhdke.ui.AllowActivity
+import sk.rafig.mhdke.ui.HistoryActivity
 import sk.rafig.mhdke.ui.LegalActivity
 import sk.rafig.mhdke.ui.WelcomeActivity
 import sk.rafig.mhdke.util.ContextTags
@@ -46,7 +47,7 @@ class SplashViewModel(private val application: Application): ViewModel() {
         } else if (!Cache.getBoolean(ContextTags.USER_SEEN_LEGAL, application)) {
             application.startActivity(Intent(application.applicationContext, LegalActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
         } else {
-            application.startActivity(Intent(application.applicationContext, AllowActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            application.startActivity(Intent(application.applicationContext, HistoryActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
         }
     }
 }

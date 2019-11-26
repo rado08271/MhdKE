@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import sk.rafig.mhdke.model.User
 
-@Database(entities = arrayOf(User::class), version = 1)
+@Database(entities = arrayOf(User::class), version = 2)
 abstract class UsersDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
 

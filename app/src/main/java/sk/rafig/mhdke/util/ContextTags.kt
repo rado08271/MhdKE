@@ -7,4 +7,5 @@ object ContextTags {
     val USER_ID = "USER_ID"
     val TICKET_ENDS = "TICKET_END"
     val TICKET_RECEIVED = "TICKET_RECEIVED"
+    val TIME_LEFT = "TIME_LEFT"
 }

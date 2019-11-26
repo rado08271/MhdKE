@@ -18,16 +18,13 @@ import sk.rafig.mhdke.util.ContextTags
 
 class TicketViewModel(private val application: Application) : ViewModel() {
 
+
     private val phoneNumber = "0908266949"
     private val smsBody = "hi"
     private var userRepository: UserRepository = UserRepository(Injection.proviceUserDataSource(application.applicationContext))
     private lateinit var user: LiveData<User>
     private var string = "ERROR"
-    private val receiver = SmsReciever(phoneNumber, smsBody)
-
-    init {
-        application.registerReceiver(receiver, IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION))
-    }
+    private val isReceived = false
 
     fun getUser(): LiveData<User> {
         return userRepository.getPerson(Cache.getInt(ContextTags.USER_ID, application))
@@ -47,18 +44,25 @@ class TicketViewModel(private val application: Application) : ViewModel() {
     }
 
     fun receiveSms(): String {
-        if (Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)) {
-
-            receiver.setListener {
-                if (it.equals(smsBody)) {
-                    Log.d("WOW", "HERE I AM")
-                    string = it
-                    Cache.addValueToCache(ContextTags.TICKET_RECEIVED, true, application)
-                }
-            }
-            return string
-        }
 
         return string;
+    }
+
+    fun formatText(time: Int): String {
+        if ( time <= 0) {
+            return "00:00"
+        }
+
+        val minutes = time/60 as Int
+
+        val seconds = time - minutes*60
+
+        val sb = StringBuffer()
+
+        sb.append(if (minutes < 10){ ("0"+minutes) } else {minutes})
+        sb.append(":")
+        sb.append(if (seconds < 10){ ("0"+seconds) } else {seconds})
+
+        return sb.toString()
     }
 }
