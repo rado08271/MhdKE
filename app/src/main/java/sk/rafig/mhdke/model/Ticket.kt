@@ -11,9 +11,6 @@ data class Ticket (
     @ColumnInfo(name = "ticketId")
     val id: String = UUID.randomUUID().toString(),
 
-    @ColumnInfo(name = "userId")
-    val userId: String = "",
-
     @ColumnInfo(name = "boughtOn")
     val boughtOn: String = ""
 )

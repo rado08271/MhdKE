@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="sk.rafig.mhdke">
+        package="sk.rafig.mhdke">
 
-
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.WRITE_SMS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-feature
             android:name="android.hardware.telephony"
-            android:required="true"/>
+            android:required="true" />
 
     <application
             android:allowBackup="true"
@@ -20,42 +19,39 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity android:name=".ui.ActiveTicketActivity"></activity>
+
         <receiver
                 android:name=".api.sms.SmsReciever"
                 android:enabled="true"
                 android:exported="true">
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
-
         </receiver>
-        <activity
-                android:name=".ui.OopsActivity">
-        </activity>
-        <activity
-                android:name=".ui.LegalActivity">
-        </activity>
+
+        <activity android:name=".ui.OopsActivity"></activity>
+        <activity android:name=".ui.LegalActivity"></activity>
         <activity android:name=".ui.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.HistoryActivity"></activity>
         <activity
-                android:name=".ui.HistoryActivity">
-        </activity>
-        <activity
-                android:parentActivityName=".ui.SplashActivity"
-                android:name=".ui.TicketActivity">
+                android:name=".ui.TicketActivity"
+                android:parentActivityName=".ui.SplashActivity">
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.action.DEFAULT"/>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.action.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.AllowActivity">
-        </activity>
-        <activity android:name=".ui.WelcomeActivity">
+        <activity android:name=".ui.AllowActivity"></activity>
+        <activity android:name=".ui.WelcomeActivity"
+                android:parentActivityName=".ui.SplashActivity">
         </activity>
     </application>
 

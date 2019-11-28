@@ -49,7 +49,7 @@ class TicketViewModel(private val application: Application) : ViewModel() {
         Cache.addValueToCache(ContextTags.TICKET_ENDS, (java.util.Calendar.getInstance().time.time + 3600).toInt(), application)
 
         return UserServiceFirebase.addTicket(Cache.getString(ContextTags.USER_ID, application),
-            Ticket(id = id, userId = Cache.getString(ContextTags.USER_ID, application), boughtOn = Calendar.getInstance().time.time.toString()))
+            Ticket(id = id, boughtOn = Calendar.getInstance().time.time.toString()))
 
     }
 

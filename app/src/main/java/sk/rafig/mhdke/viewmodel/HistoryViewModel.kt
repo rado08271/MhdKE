@@ -17,8 +17,8 @@ class HistoryViewModel(private val application: Application) : ViewModel() {
     }
 
     fun fill(){
-        val ticket = Ticket(userId = Cache.getString(ContextTags.USER_ID, application), boughtOn = "23.05.2001")
-        UserServiceFirebase.addTicket(ticket.userId, ticket)
+        val ticket = Ticket(boughtOn = "23.05.2001")
+        UserServiceFirebase.addTicket(Cache.getString(ContextTags.USER_ID, application), ticket)
     }
 
 }

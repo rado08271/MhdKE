@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/id_activity_ticket_background"
-        android:paddingHorizontal="72dp"
-        tools:context=".ui.TicketActivity">
+        tools:context=".ui.ActiveTicketActivity">
     <include
             android:id="@+id/id_activity_ticket_toolbar"
             layout="@layout/toolbar"
@@ -20,6 +17,7 @@
             android:textSize="40sp"
             android:textStyle="bold"
             android:textAlignment="center"
+            android:id="@+id/id_activity_ticket_time_remaining"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
@@ -44,6 +42,7 @@
                 android:layout_height="wrap_content">
 
             <ImageView
+                    android:id="@+id/id_activity_ticket_image_background"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -93,6 +92,28 @@
                         android:layout_height="wrap_content"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:visibility="gone"
+                    android:id="@+id/id_activity_ticket_show_ticket"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp">
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/string_activity_ticket_ticket_to_show"
+                        android:textColor="@color/text_white"
+                        android:visibility="visible"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
@@ -116,7 +137,7 @@
                 android:layout_width="176dp"
                 android:layout_height="176dp" />
 
-    <ImageView
+        <ImageView
                 android:visibility="invisible"
                 android:id="@+id/id_activity_ticket_background_pulse"
                 android:src="@drawable/ic_pulse_signal"
@@ -155,4 +176,15 @@
 
     </LinearLayout>
 
+    <ImageView
+            android:id="@+id/id_activity_ticket_history_button"
+            android:visibility="gone"
+            android:src="@drawable/ic_history"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/id_activity_ticket_pulse_animation"
+            android:layout_marginEnd="8dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

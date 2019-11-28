@@ -79,7 +79,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:2.1.0"
 
     // ReactiveStreams support
-    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.1.0" // For Kotlin use lifecycle-reactivestreams-ktx
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.1.0"
+    // For Kotlin use lifecycle-reactivestreams-ktx
 
 
     //RXjava
