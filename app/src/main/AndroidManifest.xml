@@ -20,7 +20,15 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <receiver android:name=".api.sms.SmsReciever"/>
+        <receiver
+                android:name=".api.sms.SmsReciever"
+                android:enabled="true"
+                android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+
+        </receiver>
         <activity
                 android:name=".ui.OopsActivity">
         </activity>

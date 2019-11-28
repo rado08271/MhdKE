@@ -11,7 +11,7 @@ class UserRepository(private val userDao: UserDao) {
         userDao.addUser(user)
     }
 
-    fun getPerson(id: Int): LiveData<User> {
+    fun getPerson(id: String): LiveData<User> {
         user = userDao.getUser(id)
         return user
     }

@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="horizontal"
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="72dp">
 
     <LinearLayout
@@ -26,7 +27,7 @@
     </LinearLayout>
 
     <ImageView
-            android:src="@drawable/ic_logo_black"
+            android:src="@drawable/ic_history_ticket_icon"
             android:layout_marginEnd="24dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
