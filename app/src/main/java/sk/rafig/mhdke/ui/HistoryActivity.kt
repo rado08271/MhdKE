@@ -2,6 +2,7 @@ package sk.rafig.mhdke.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,9 +24,13 @@ class HistoryActivity : AppCompatActivity() {
 
         viewModel.getTickets().observe(this, Observer {
             if (it != null && it.size > 0 ) {
+                activity_history_recycler_view.visibility = View.VISIBLE
+//                activity_history__wifi.visibility = View.GONE
                 activity_history_recycler_view.layoutManager = LinearLayoutManager(applicationContext)
                 activity_history_recycler_view.adapter = HistoryRecyclerView(applicationContext, it)
             } else {
+                activity_history_recycler_view.visibility = View.VISIBLE
+//                activity_history__wifi.visibility = View.GONE
                 viewModel.getTickets()
                 viewModel.fill()
             }

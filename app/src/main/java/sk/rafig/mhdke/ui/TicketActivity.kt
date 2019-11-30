@@ -68,10 +68,6 @@ class TicketActivity : AppCompatActivity() {
             }
         })
 
-//        id_activity_ticket_history_button.setOnClickListener {
-//            startActivity(Intent(applicationContext, HistoryActivity::class.java))
-//        }
-
         runnable = Runnable {
             if (!Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)) {
                 receiver.setOnReceiveListener {
@@ -81,7 +77,6 @@ class TicketActivity : AppCompatActivity() {
                     body = it
                 }
             } else {
-//                id_activity_ticket_time_remaining.setText(viewModel.formatText(viewModel.getTime()))
                 Log.d(TAG, viewModel.getTime().toString())
             }
 
