@@ -79,7 +79,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:2.1.0"
 
     // ReactiveStreams support
-    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.1.0" // For Kotlin use lifecycle-reactivestreams-ktx
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:2.1.0"
+    // For Kotlin use lifecycle-reactivestreams-ktx
 
 
     //RXjava
@@ -114,5 +115,9 @@ dependencies {
 
     // dexter
     implementation 'com.karumi:dexter:6.0.0'
+
+    // baarcode
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
 
 }

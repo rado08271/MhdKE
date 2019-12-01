@@ -9,7 +9,7 @@
 
 
     <include
-            android:id="@+id/welcome_logo"
+            android:id="@+id/id_activity_welcome_toolbar"
             layout="@layout/toolbar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

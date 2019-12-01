@@ -1,4 +1,4 @@
-package sk.rafig.mhdke.api
+package sk.rafig.mhdke.api.local
 
 import android.content.Context
 import androidx.room.Database
@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import sk.rafig.mhdke.model.User
 
-@Database(entities = arrayOf(User::class), version = 1)
+@Database(entities = arrayOf(User::class), version = 2)
 abstract class UsersDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
 
@@ -15,7 +15,8 @@ abstract class UsersDatabase: RoomDatabase() {
 
         fun getInstance(context: Context): UsersDatabase =
             INSTANCE ?: synchronized(this) {
-                INSTANCE ?:  buildDatabase(context).also { INSTANCE = it }
+                INSTANCE
+                    ?:  buildDatabase(context).also { INSTANCE = it }
             }
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(

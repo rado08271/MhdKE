@@ -9,6 +9,7 @@
         tools:context=".ui.SplashActivity">
 
     <LinearLayout
+            android:id="@+id/id_splash_main_splash"
             android:gravity="center"
             android:orientation="vertical"
             android:layout_width="wrap_content"

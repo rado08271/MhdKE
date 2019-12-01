@@ -19,19 +19,26 @@ import sk.rafig.mhdke.R
 import androidx.core.content.PermissionChecker.checkCallingOrSelfPermission
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.karumi.dexter.MultiplePermissionsReport
+import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import org.hotovo.mhdke.viewmodel.AllowViewModel
 import sk.rafig.mhdke.model.User
+import sk.rafig.mhdke.ui.toolbar.Toolbar
+import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
 
 class AllowActivity : AppCompatActivity() {
 
     private val SEND_PERMISSION = Manifest.permission.SEND_SMS
+    private val RECEIVE_PERMISSION = Manifest.permission.RECEIVE_SMS
     private lateinit var viewModel: AllowViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_allow)
+        setActionBar(findViewById(R.id.id_activity_allow_toolbar))
+        Toolbar.createToolbar(this, ToolbarColor.BLACK, false)
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application)).get(AllowViewModel::class.java)
 
@@ -45,19 +52,28 @@ class AllowActivity : AppCompatActivity() {
         //Dexter will take care of it!
         allow_agree.setOnClickListener{
             Dexter.withActivity(this)
-                .withPermission(SEND_PERMISSION)
-                .withListener(object: PermissionListener {
-                    override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-                        startActivity(Intent(applicationContext, TicketActivity::class.java))
+                .withPermissions(SEND_PERMISSION, RECEIVE_PERMISSION )
+                .withListener(object: MultiplePermissionsListener {
+                    override fun onPermissionRationaleShouldBeShown(
+                        permissions: MutableList<PermissionRequest>?,
+                        token: PermissionToken?
+                    ) {
+                        token!!.continuePermissionRequest()
                     }
 
-                    override fun onPermissionRationaleShouldBeShown( permission: PermissionRequest?, token: PermissionToken?) {
-
+                    override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+                        if (report!!.areAllPermissionsGranted() ) {
+                            startActivity(Intent(applicationContext, TicketActivity::class.java))
+                        } else {
+                            startActivity(Intent(applicationContext, OopsActivity::class.java))
+                        }
                     }
 
-                    override fun onPermissionDenied(response: PermissionDeniedResponse?) {
-                        startActivity(Intent(applicationContext, OopsActivity::class.java))
-                    }
+//                    override fun onPermissionGranted(response: PermissionGrantedResponse?) {
+//                    }
+//                    override fun onPermissionRationaleShouldBeShown( permission: PermissionRequest?, token: PermissionToken?) {                    }
+//                    override fun onPermissionDenied(response: PermissionDeniedResponse?) {
+//                    }
                 })
                 .check()
         }

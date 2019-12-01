@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_legal.*
 import sk.rafig.mhdke.R
+import sk.rafig.mhdke.ui.toolbar.Toolbar
+import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.viewmodel.LegalViewModel
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
@@ -18,6 +20,8 @@ class LegalActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_legal)
+        setActionBar(findViewById(R.id.id_activity_legal_toolbar))
+        Toolbar.createToolbar(this, ToolbarColor.BLACK, false)
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application)).get(LegalViewModel::class.java)
 

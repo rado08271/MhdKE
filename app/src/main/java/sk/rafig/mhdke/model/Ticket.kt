@@ -5,14 +5,18 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
+@Entity
 data class Ticket (
     @PrimaryKey
     @ColumnInfo(name = "ticketId")
     val id: String = UUID.randomUUID().toString(),
 
-    @ColumnInfo(name = "userId")
-    val userId: String,
-
     @ColumnInfo(name = "boughtOn")
-    val boughtOn: String
+    val boughtOn: String = "",
+
+    @ColumnInfo(name = "userId")
+    val userId: String = "",
+
+    @ColumnInfo(name = "column_body")
+    val columnBody: String = ""
 )
