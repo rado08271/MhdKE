@@ -14,8 +14,8 @@ import sk.rafig.mhdke.util.SmsSpecs;
 public class SmsReciever extends BroadcastReceiver {
 
     private static final String TAG = SmsReciever.class.getSimpleName();
-    public static final String pdu_type = "pdus";
-    public OnReceiveListener onReceiveListener;
+    private static final String pdu_type = "pdus";
+    private OnReceiveListener onReceiveListener;
 
     public SmsReciever() {
     }
@@ -89,7 +89,7 @@ public class SmsReciever extends BroadcastReceiver {
                 Log.d(TAG, "onReceive: " + body);
                 Log.d(TAG, "NUMBER: " + number);
 
-                if (SmsSpecs.INSTANCE.getServiceProviderNumber().equals(number)) {
+                if (SmsSpecs.serviceProviderNumber.equals(number)) {
                     if (onReceiveListener != null) {
                         Log.d(TAG, "LISTENER REGISTERED");
                         onReceiveListener.onTextReceived(body);

@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_ticket.*
-import org.hotovo.mhdke.viewmodel.TicketViewModel
+import sk.rafig.mhdke.viewmodel.TicketViewModel
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.api.local.Cache
 import sk.rafig.mhdke.api.service.SmsReciever
@@ -56,7 +56,7 @@ class TicketActivity : AppCompatActivity() {
             //what if still waiting ut closed the app?
         })
 
-        id_activity_ticket_time_remaining.setText(TimeUtil.formatText(SmsSpecs.length))
+        id_activity_ticket_time_remaining.text = TimeUtil.formatText(SmsSpecs.length)
 
         id_activity_ticket_ticket_buy_ticket.setOnClickListener {
             viewModel.sendSms()
@@ -80,7 +80,7 @@ class TicketActivity : AppCompatActivity() {
     }
 
 
-    fun toBuy() {
+    private fun toBuy() {
         Log.d(TAG, "YOU MAY BUY")
 
         Animator().pulseAnimation(id_activity_ticket_primary_pulse, 1000)
@@ -94,7 +94,7 @@ class TicketActivity : AppCompatActivity() {
         id_activity_ticket_sms_price.visibility = View.VISIBLE
     }
 
-    fun waiting() {
+    private fun waiting() {
         Log.d(TAG, "WAITING")
         Animator().pulseAnimation(id_activity_ticket_primary_pulse, 1000)
         Animator().pulseAnimation(id_activity_ticket_secondary_pulse, 1200)

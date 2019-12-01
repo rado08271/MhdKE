@@ -5,8 +5,6 @@ import android.icu.util.Calendar
 import android.os.Build
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import sk.rafig.mhdke.api.local.Cache
 
 object TimeUtil {
@@ -32,9 +30,9 @@ object TimeUtil {
 
         val sb = StringBuffer()
 
-        sb.append(if (minutes < 10){ ("0"+minutes) } else {minutes})
+        sb.append(if (minutes < 10){ ("0$minutes") } else {minutes})
         sb.append(":")
-        sb.append(if (seconds < 10){ ("0"+seconds) } else {seconds})
+        sb.append(if (seconds < 10){ ("0$seconds") } else {seconds})
 
         return sb.toString()
     }

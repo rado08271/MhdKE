@@ -5,21 +5,20 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
-import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import sk.rafig.mhdke.notifications.NotificationCreate
 import sk.rafig.mhdke.util.TimeUtil
 import java.util.*
 
-class NotificationService(): Service(){
+class NotificationService : Service(){
 
     private val CHANNEL_ID = "TiketNotificationChannel"
     private val CHANNEL_ID_QUICK_UPDATES = "TiketNotificationChannel"
 //    private val notification = NotificationCreate(applicationContext, CHANNEL_ID)
 
     companion object {
-        fun startService(context: Context, message: String) {
+        fun startService(context: Context) {
             val startIntent = Intent(context, NotificationService::class.java)
             ContextCompat.startForegroundService(context, startIntent)
         }
@@ -39,12 +38,18 @@ class NotificationService(): Service(){
             @RequiresApi(Build.VERSION_CODES.N)
             override fun run() {
                 val timeLeft = TimeUtil.getTime(application)
-                if ( timeLeft.toInt() == 0) {
-                    startForeground(startId, notification.createNotification("RUN OUT", "NO TIME LEFT", startId))
-                } else if (timeLeft.toInt() == 10) {
-//                    startForeground(startId, notification.createNotification("Running Out", "You have 10 seconds left", startId))
-                } else if (timeLeft.toInt() > 0) {
-                    startForeground(666, notification.countDownNotification(TimeUtil.formatText(timeLeft), 666))
+                when {
+                    timeLeft.toInt() == 0 -> {
+                        startForeground(startId, notification.createNotification("RUN OUT", "NO TIME LEFT", startId))
+                    }
+
+                    timeLeft.toInt() == 10 -> {
+            //                    startForeground(startId, notification.createNotification("Running Out", "You have 10 seconds left", startId))
+                    }
+
+                    timeLeft.toInt() > 0 -> {
+                        startForeground(666, notification.countDownNotification(TimeUtil.formatText(timeLeft), 666))
+                    }
                 }
             }
         }, 0, 1000)

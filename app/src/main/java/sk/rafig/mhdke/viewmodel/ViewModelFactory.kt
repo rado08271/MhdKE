@@ -1,11 +1,8 @@
 package sk.rafig.mhdke.viewmodel
 
 import android.app.Application
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import org.hotovo.mhdke.viewmodel.*
 import java.lang.IllegalArgumentException
 
 class ViewModelFactory(val application: Application): ViewModelProvider.Factory {
@@ -40,7 +37,7 @@ class ViewModelFactory(val application: Application): ViewModelProvider.Factory 
             modelClass.isAssignableFrom(ToolbarViewModel::class.java) ->
                 ToolbarViewModel(application) as T
 
-            else -> throw IllegalArgumentException("Unknown Viewmodel class!") as Throwable
+            else -> throw IllegalArgumentException("Unknown Viewmodel class!")
         }
     }
 }

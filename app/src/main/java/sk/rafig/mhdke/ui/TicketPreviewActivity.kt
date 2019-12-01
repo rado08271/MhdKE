@@ -6,15 +6,13 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_ticket_preciew.*
-import kotlinx.android.synthetic.main.fragment_ticket.*
-import org.hotovo.mhdke.viewmodel.TicketPreviewViewModel
+import sk.rafig.mhdke.viewmodel.TicketPreviewViewModel
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.ui.toolbar.Toolbar
 import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.util.Animator
 import sk.rafig.mhdke.util.Barcoder
 import sk.rafig.mhdke.util.ContextTags
-import sk.rafig.mhdke.viewmodel.SplashViewModel
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
 class TicketPreviewActivity : AppCompatActivity() {
@@ -51,12 +49,12 @@ class TicketPreviewActivity : AppCompatActivity() {
         }
     }
 
-    fun showLoading(){
+    private fun showLoading(){
         id_activity_preview_tickets_none.visibility = View.VISIBLE
         Animator().emptyAnimation(id_activity_preview_tickets_tumbleweed, 2500, 0f)
     }
 
-    fun hideLoading(){
+    private fun hideLoading(){
         id_activity_preview_tickets_none.visibility = View.GONE
         Animator().stopAnimation(id_activity_preview_tickets_tumbleweed)
     }

@@ -1,11 +1,10 @@
-package org.hotovo.mhdke.viewmodel
+package sk.rafig.mhdke.viewmodel
 
 import android.app.Application
 import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
 import android.telephony.SmsManager
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -26,13 +25,10 @@ import sk.rafig.mhdke.util.TimeUtil
 class TicketViewModel(private val application: Application) : ViewModel() {
 
 
-    private val phoneNumber = "0908266949"
-    private val smsBody = "hi"
     private var ticketRepository: TicketRepository =
         TicketRepository(Injection.provideTicketDataSource(application.applicationContext))
     private var userRepository: UserRepository =
         UserRepository(Injection.proviceUserDataSource(application.applicationContext))
-    private lateinit var ticket: LiveData<Ticket>
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun addTicet(id: String, body: String){
@@ -54,19 +50,19 @@ class TicketViewModel(private val application: Application) : ViewModel() {
 
     fun sendSms(){
         val smsManager = SmsManager.getDefault()
-        smsManager.sendTextMessage(phoneNumber, null, smsBody, null, null)
+        smsManager.sendTextMessage(SmsSpecs.serviceProviderNumber, null, SmsSpecs.serviceProviderSmsCondition, null, null)
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun ticketWaiting(): LiveData<Boolean> {
-        if (Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)
+        return if (Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)
             && (TimeUtil.getTime(application)) > 0 ) {
-            return MutableLiveData<Boolean>(true)
+            MutableLiveData<Boolean>(true)
         } else {
             Cache.addValueToCache(ContextTags.TICKET_RECEIVED, false, application)
             Cache.addValueToCache(ContextTags.TICKET_ENDS, 0L, application)
 
-            return MutableLiveData<Boolean>(false)
+            MutableLiveData<Boolean>(false)
 
         }
     }

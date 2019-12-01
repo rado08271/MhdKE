@@ -7,7 +7,6 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.history_row.view.*
 import sk.rafig.mhdke.R
@@ -43,7 +42,7 @@ class HistoryRecyclerView(private val context: Context, private val tickets:List
 
             intent.putExtra(ContextTags.HISTORY_TICKET_ID, tickets[position].id)
 
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.startActivity(intent)
         }
     }

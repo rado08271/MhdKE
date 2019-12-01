@@ -1,6 +1,5 @@
 package sk.rafig.mhdke.ui.toolbar
 
-import android.content.Context
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
@@ -8,14 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.toolbar.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.coroutineScope
-import sk.rafig.mhdke.R
-import sk.rafig.mhdke.ui.TicketActivity
 import sk.rafig.mhdke.viewmodel.ToolbarViewModel
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.coroutineContext
 
 class Toolbar {
     companion object {

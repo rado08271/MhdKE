@@ -1,10 +1,7 @@
 package sk.rafig.mhdke.viewmodel
 
-import android.app.Activity
 import android.app.Application
-import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,7 +21,7 @@ class SplashViewModel(private val application: Application): ViewModel() {
         UserRepository(Injection.proviceUserDataSource(application.applicationContext))
     private lateinit var user: LiveData<User>
 
-    fun createUser(){
+    private fun createUser(){
         viewModelScope.launch {
             Log.d("USER", "CREATING USER")
             val userRemote = UserRemote(tickets = listOf())
@@ -43,16 +40,12 @@ class SplashViewModel(private val application: Application): ViewModel() {
             createUser()
         }
 
-        if (!Cache.getBoolean(ContextTags.USER_SEEN_WELCOME, application)) {
-//            application.startActivity(Intent(application.applicationContext, WelcomeActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-            return MutableLiveData<Class<*>>(WelcomeActivity::class.java)
+        return if (!Cache.getBoolean(ContextTags.USER_SEEN_WELCOME, application)) {
+            MutableLiveData<Class<*>>(WelcomeActivity::class.java)
         } else if (!Cache.getBoolean(ContextTags.USER_SEEN_LEGAL, application)) {
-//            application.startActivity(Intent(application.applicationContext,LegalActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-            return MutableLiveData<Class<*>>(LegalActivity::class.java)
+            MutableLiveData<Class<*>>(LegalActivity::class.java)
         } else {
-//            application.startActivity(Intent(application.applicationContext, TicketActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-//            return MutableLiveData<Class<*>>(AllowActivity::class.java)
-            return MutableLiveData<Class<*>>(ActiveTicketActivity::class.java)
+            MutableLiveData<Class<*>>(AllowActivity::class.java)
         }
     }
 }

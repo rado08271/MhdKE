@@ -44,6 +44,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -67,8 +68,10 @@
                         android:layout_height="90dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
 
                     <TextView
                             android:layout_width="wrap_content"
@@ -84,8 +87,12 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ImageView
-                    android:id="@+id/id_activity_active_primary_pulse"
+            <androidx.core.widget.ContentLoadingProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:progressDrawable="@drawable/ic_progress"
+                    android:rotation="90"
+                    android:scaleX="-1"
+                    android:id="@+id/id_activity_active_progress"
                     android:layout_width="144dp"
                     android:layout_height="144dp"
                     android:src="@drawable/ic_pulse_signal"
@@ -93,6 +100,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_welcome.*
-import org.hotovo.mhdke.viewmodel.WelcomeViewModel
+import sk.rafig.mhdke.viewmodel.WelcomeViewModel
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.ui.toolbar.Toolbar
 import sk.rafig.mhdke.ui.toolbar.ToolbarColor

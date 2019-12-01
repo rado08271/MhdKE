@@ -1,4 +1,4 @@
-package org.hotovo.mhdke.viewmodel
+package sk.rafig.mhdke.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -14,11 +14,6 @@ class HistoryViewModel(private val application: Application) : ViewModel() {
 
     fun getTickets(): LiveData<List<Ticket>>{
         return UserServiceFirebase.getAllTickets(Cache.getString(ContextTags.USER_ID, application))
-    }
-
-    fun fill(){
-        val ticket = Ticket(boughtOn = "23.05.2001")
-        UserServiceFirebase.addTicket(Cache.getString(ContextTags.USER_ID, application), ticket)
     }
 
 }

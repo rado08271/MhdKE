@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.Context
 
 object Cache {
-    private val TIKET_VALUE = "TICKET_VALUE"
+    private const val TIKET_VALUE = "TICKET_VALUE"
     fun addValueToCache(id: String, value: Boolean, application: Application): Boolean{
         val sp = application.getSharedPreferences(TIKET_VALUE, Context.MODE_PRIVATE) ?: return false
 

@@ -1,9 +1,7 @@
 package sk.rafig.mhdke.util
 
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter

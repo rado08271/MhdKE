@@ -1,6 +1,5 @@
 package sk.rafig.mhdke.ui.toolbar
 
-import kotlinx.android.synthetic.main.activity_splash.view.*
 import sk.rafig.mhdke.R
 
 enum class ToolbarColor(val drawable: Int) {

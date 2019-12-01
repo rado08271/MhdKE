@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_history.*
-import org.hotovo.mhdke.viewmodel.HistoryViewModel
+import sk.rafig.mhdke.viewmodel.HistoryViewModel
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.ui.adapter.HistoryRecyclerView
 import sk.rafig.mhdke.ui.toolbar.Toolbar
@@ -29,7 +29,7 @@ class HistoryActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application)).get(HistoryViewModel::class.java)
 
         viewModel.getTickets().observe(this, Observer {
-            if (it != null && it.size > 0 ) {
+            if (it != null && it.isNotEmpty()) {
                 activity_history_recycler_view.visibility = View.VISIBLE
                 id_activity_history_tickets_none.visibility = View.GONE
                 activity_history_recycler_view.layoutManager = LinearLayoutManager(applicationContext)

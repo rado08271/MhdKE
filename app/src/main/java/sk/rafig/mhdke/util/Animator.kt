@@ -5,12 +5,8 @@ import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.graphics.Color
 import android.view.View
-import androidx.interpolator.view.animation.FastOutSlowInInterpolator
-import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
-import androidx.core.graphics.rotationMatrix
-import androidx.core.view.marginStart
-import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 
 class Animator {
 

@@ -1,4 +1,4 @@
-package org.hotovo.mhdke.viewmodel
+package sk.rafig.mhdke.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel

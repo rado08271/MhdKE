@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:card_view="http://schemas.android.com/tools"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:background="@color/white"
@@ -31,7 +30,6 @@
                     android:id="@+id/history_row_ticket_id"
                     android:maxLines="1"
                     android:maxLength="30"
-                    android:text="asdfsdfsaddsfasdfasdfasdfasdfasdfasdfasdfasdfadfasdfasdfasdfasdfasdf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </LinearLayout>

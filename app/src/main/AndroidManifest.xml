@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         package="sk.rafig.mhdke">
 
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
-    <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.WRITE_SMS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <uses-feature
@@ -38,7 +34,8 @@
         <activity
                 android:name=".ui.ActiveTicketActivity"
                 android:parentActivityName=".ui.SplashActivity"
-                android:theme="@style/AppTheme.Dark"></activity>
+                android:theme="@style/AppTheme.Dark">
+        </activity>
 
         <activity
                 android:screenOrientation="portrait"
@@ -53,8 +50,8 @@
 
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.OopsActivity"></activity>
-        <activity android:name=".ui.LegalActivity"></activity>
+                android:name=".ui.OopsActivity" />
+        <activity android:name=".ui.LegalActivity" />
         <activity
                 android:name=".ui.SplashActivity">
             <intent-filter>
@@ -65,18 +62,18 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.HistoryActivity"></activity>
+                android:name=".ui.HistoryActivity" />
         <activity
                 android:screenOrientation="portrait"
-                android:name=".ui.AllowActivity"></activity>
+                android:name=".ui.AllowActivity" />
         <activity
                 android:screenOrientation="portrait"
                 android:name=".ui.TicketPreviewActivity"
-                android:theme="@style/AppTheme.Dark"></activity>
+                android:theme="@style/AppTheme.Dark" />
         <activity
                 android:screenOrientation="portrait"
                 android:name=".ui.WelcomeActivity"
-                android:parentActivityName=".ui.SplashActivity"></activity>
+                android:parentActivityName=".ui.SplashActivity" />
     </application>
 
 </manifest>
