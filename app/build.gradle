@@ -14,7 +14,7 @@ android {
         versionCode 6
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        setProperty("archivesBaseName", "plant-les-v$versionName.$versionCode")
+        setProperty("archivesBaseName", "tiket-v$versionName.$versionCode")
 
         javaCompileOptions {
             annotationProcessorOptions {
