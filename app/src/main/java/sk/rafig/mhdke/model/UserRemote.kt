@@ -11,12 +11,12 @@ data class UserRemote (
 
     @PrimaryKey
     @ColumnInfo(name = "userId")
-//    val id: String = UUID.randomUUID().toString(),
     val id: String = UUID.randomUUID().toString(),
+//    val id: String = ,
 
     @ColumnInfo(name = "username")
     val userName: String = "",
 
-    @ColumnInfo(name = " ticket_list")
-    val tickets: List<Ticket> = emptyList()
+    @ColumnInfo(name = "ticket_list")
+    val tickets: List<Ticket> = listOf()
 )

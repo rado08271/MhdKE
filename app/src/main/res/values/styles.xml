@@ -22,4 +22,14 @@
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColor">@color/text_white</item>
     </style>
+
+    <style name="AppTheme.Dark">
+        <item name="android:textColor">@color/text_white</item>
+    </style>
+
+    <style name="AppTheme.Light">
+        <item name="android:textColor">@color/text_dark</item>
+    </style>
+
+
 </resources>

@@ -1,4 +1,4 @@
-package sk.rafig.mhdke.api.sms;
+package sk.rafig.mhdke.api.service;
 
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.telephony.SmsMessage;
 import android.util.Log;
-import android.widget.Toast;
 
 import sk.rafig.mhdke.util.SmsSpecs;
 
@@ -73,6 +72,7 @@ public class SmsReciever extends BroadcastReceiver {
         String format = bundle.getString("format");
         Object[] pdus = (Object[]) bundle.get(pdu_type);
 
+        Log.d("CALLED", "CALLLEEEEED!!!!");
         if (pdus != null) {
             boolean isVersionM = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
             msgs = new SmsMessage[pdus.length];

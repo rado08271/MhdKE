@@ -12,7 +12,7 @@ data class User (
     @PrimaryKey
     @ColumnInfo(name = "userId")
 //    val id: String = UUID.randomUUID().toString(),
-    val id: String = UUID.randomUUID().toString(),
+    val id: String = "",
 
     @ColumnInfo(name = "username")
     val userName: String = ""

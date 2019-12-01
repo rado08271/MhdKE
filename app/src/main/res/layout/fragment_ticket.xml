@@ -1,51 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context=".ui.TicketFragment">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/id_ticket_fragment_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:elevation="10dp"
+        style="@style/AppTheme.Light"
+        tools:context=".ui.TicketFragment">
 
     <LinearLayout
-            android:layout_gravity="center"
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
         <TextView
+                android:textColor="@color/text_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="68dp"
                 android:layout_marginBottom="100dp"
-                android:layout_gravity="center"
-                android:text="@string/ticket_ticket_active"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:text="@string/ticket_ticket_active" />
 
         <TextView
-                android:layout_marginBottom="66dp"
-                android:layout_gravity="center"
-                android:id="@+id/received_ticket_message"
-                android:text="blablabalbalblalbalbalbalbalbalba"
+                android:textColor="@color/text_dark"
+                android:id="@+id/id_ticket_fragment_received_ticket_message"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="66dp" />
+
         <TextView
-                android:layout_marginBottom="18dp"
-                android:layout_gravity="center"
-                android:id="@+id/received_ticket_number"
-                android:text="@string/ticket_ticket_active"
+                android:textColor="@color/text_dark"
+                android:id="@+id/id_ticket_fragment_received_ticket_number"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        <ImageView
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:id="@+id/received_ticket_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_marginBottom="18dp"/>
 
         <ImageView
-                android:layout_marginTop="58dp"
-                android:layout_marginBottom="35dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_cancel"
+                android:id="@+id/id_ticket_fragment_received_ticket_code"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
 
     </LinearLayout>
 

@@ -1,8 +1,7 @@
-package sk.rafig.mhdke.api
+package sk.rafig.mhdke.api.local
 
 import androidx.lifecycle.LiveData
 import sk.rafig.mhdke.model.User
-import sk.rafig.mhdke.util.ContextTags
 
 class UserRepository(private val userDao: UserDao) {
     lateinit var user: LiveData<User>

@@ -1,4 +1,4 @@
-package sk.rafig.mhdke.api
+package sk.rafig.mhdke.api.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

@@ -7,10 +7,10 @@ import android.graphics.Color
 import android.view.View
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 import android.view.animation.Animation
-
-
-
-
+import android.view.animation.LinearInterpolator
+import androidx.core.graphics.rotationMatrix
+import androidx.core.view.marginStart
+import androidx.interpolator.view.animation.LinearOutSlowInInterpolator
 
 class Animator {
 
@@ -45,6 +45,21 @@ class Animator {
         animation.setEvaluator(ArgbEvaluator())
         animation.repeatMode = ObjectAnimator.REVERSE
         animation.repeatCount = ObjectAnimator.INFINITE
+        animation.start()
+    }
+
+    fun emptyAnimation(view: View, speed: Long, toLeft: Float){
+        val animation: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
+            view,
+            PropertyValuesHolder.ofFloat("translationX", 350f),
+            PropertyValuesHolder.ofFloat("rotation", 720f)
+        )
+
+        animation.duration = speed
+        animation.repeatCount = ObjectAnimator.INFINITE
+
+        animation.repeatMode = ObjectAnimator.RESTART
+        animation.interpolator = LinearInterpolator()
         animation.start()
     }
 }

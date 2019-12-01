@@ -116,4 +116,8 @@ dependencies {
     // dexter
     implementation 'com.karumi:dexter:6.0.0'
 
+    // baarcode
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
 }

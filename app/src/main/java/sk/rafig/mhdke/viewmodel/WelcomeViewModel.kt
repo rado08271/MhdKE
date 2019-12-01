@@ -2,7 +2,7 @@ package org.hotovo.mhdke.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
-import sk.rafig.mhdke.api.Cache
+import sk.rafig.mhdke.api.local.Cache
 import sk.rafig.mhdke.util.ContextTags
 
 class WelcomeViewModel(val application: Application): ViewModel() {

@@ -12,5 +12,11 @@ data class Ticket (
     val id: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "boughtOn")
-    val boughtOn: String = ""
+    val boughtOn: String = "",
+
+    @ColumnInfo(name = "userId")
+    val userId: String = "",
+
+    @ColumnInfo(name = "column_body")
+    val columnBody: String = ""
 )

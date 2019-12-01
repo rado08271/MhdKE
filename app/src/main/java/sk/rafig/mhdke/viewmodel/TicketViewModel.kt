@@ -1,56 +1,55 @@
 package org.hotovo.mhdke.viewmodel
 
 import android.app.Application
-import android.app.PendingIntent
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.IntentFilter
+import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Build
-import android.provider.Telephony
 import android.telephony.SmsManager
-import android.text.method.TimeKeyListener
-import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import sk.rafig.mhdke.api.Cache
-import sk.rafig.mhdke.api.UserRepository
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import sk.rafig.mhdke.api.local.Cache
 import sk.rafig.mhdke.api.UserServiceFirebase
-import sk.rafig.mhdke.api.sms.SmsReciever
+import sk.rafig.mhdke.api.local.TicketRepository
+import sk.rafig.mhdke.api.local.UserRepository
 import sk.rafig.mhdke.di.Injection
 import sk.rafig.mhdke.model.Ticket
-import sk.rafig.mhdke.model.User
+import sk.rafig.mhdke.ui.ActiveTicketActivity
 import sk.rafig.mhdke.util.ContextTags
+import sk.rafig.mhdke.util.SmsSpecs
+import sk.rafig.mhdke.util.TimeUtil
 
 class TicketViewModel(private val application: Application) : ViewModel() {
 
 
     private val phoneNumber = "0908266949"
     private val smsBody = "hi"
-    private var userRepository: UserRepository = UserRepository(Injection.proviceUserDataSource(application.applicationContext))
-    private lateinit var user: LiveData<User>
-    private var string = "ERROR"
-    private val isReceived = false
-
-    fun getUser(): LiveData<User> {
-        return userRepository.getPerson(Cache.getString(ContextTags.USER_ID, application))
-    }
-
-    fun getTicket(): LiveData<Ticket> {
-        return UserServiceFirebase.getTicket(Cache.getString(ContextTags.USER_ID, application), Cache.getString(ContextTags.TICKET_ID, application))
-    }
+    private var ticketRepository: TicketRepository =
+        TicketRepository(Injection.provideTicketDataSource(application.applicationContext))
+    private var userRepository: UserRepository =
+        UserRepository(Injection.proviceUserDataSource(application.applicationContext))
+    private lateinit var ticket: LiveData<Ticket>
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun addTicet(id: String, body: String){
-        Cache.addValueToCache(ContextTags.TICKET_ID, id, application)
-        Cache.addValueToCache(ContextTags.TICKET_RECEIVED, true, application)
-        Cache.addValueToCache(ContextTags.TICKET_ENDS, (java.util.Calendar.getInstance().time.time + 3600).toInt(), application)
+        viewModelScope.launch {
+            Cache.addValueToCache(ContextTags.TICKET_ID, id, application)
+            Cache.addValueToCache(ContextTags.TICKET_RECEIVED, true, application)
+            val well = (System.currentTimeMillis() + SmsSpecs.length * 1000)
+            Cache.addValueToCache(ContextTags.TICKET_ENDS, well, application)
 
-        return UserServiceFirebase.addTicket(Cache.getString(ContextTags.USER_ID, application),
-            Ticket(id = id, boughtOn = Calendar.getInstance().time.time.toString()))
+            val ticket = Ticket( columnBody = body, id = id,
+                boughtOn = Calendar.getInstance().time.time.toString(), userId = Cache.getString(ContextTags.USER_ID, application))
 
+//            ticketRepository.addTicket(ticket)
+            UserServiceFirebase.addTicket(Cache.getString(ContextTags.USER_ID, application), ticket)
+            application.startActivity(Intent(application.applicationContext,
+                ActiveTicketActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        }
     }
 
     fun sendSms(){
@@ -58,38 +57,10 @@ class TicketViewModel(private val application: Application) : ViewModel() {
         smsManager.sendTextMessage(phoneNumber, null, smsBody, null, null)
     }
 
-    fun receiveSms(): String {
-
-        return string;
-    }
-
-    fun formatText(time: Long): String {
-        if ( time <= 0) {
-            return "00:00"
-        }
-
-        val minutes = time/60
-
-        val seconds = time - minutes*60
-
-        val sb = StringBuffer()
-
-        sb.append(if (minutes < 10){ ("0"+minutes) } else {minutes})
-        sb.append(":")
-        sb.append(if (seconds < 10){ ("0"+seconds) } else {seconds})
-
-        return sb.toString()
-    }
-
-    @RequiresApi(Build.VERSION_CODES.N)
-    fun getTime(): Long {
-//        return MutableLiveData<Long>(Cache.getInt(ContextTags.TICKET_ENDS, application) - Calendar.getInstance().time.time)
-        return (Cache.getInt(ContextTags.TICKET_ENDS, application) - Calendar.getInstance().time.time)
-    }
-
     @RequiresApi(Build.VERSION_CODES.N)
     fun ticketWaiting(): LiveData<Boolean> {
-        if (Cache.getBoolean(ContextTags.TICKET_RECEIVED, application) && getTime() > 0) {
+        if (Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)
+            && (TimeUtil.getTime(application)) > 0 ) {
             return MutableLiveData<Boolean>(true)
         } else {
             Cache.addValueToCache(ContextTags.TICKET_RECEIVED, false, application)

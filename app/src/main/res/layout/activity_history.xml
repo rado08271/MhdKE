@@ -14,8 +14,8 @@
             android:background="@color/colorPrimary" />
 
     <include
+            android:id="@+id/id_activity_history_toolbar"
             layout="@layout/toolbar"
-            android:id="@+id/id_activity_ticket_toolbar"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -27,7 +27,7 @@
             android:text="Historia listkov"
             android:textAlignment="center"
             android:textColor="#fff"
-            app:layout_constraintTop_toBottomOf="@+id/id_activity_ticket_toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/id_activity_history_toolbar"
             tools:layout_editor_absoluteX="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,5 +38,37 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
+    <View
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/shadow" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:id="@+id/id_activity_history_tickets_none"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_history_recycler_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:alpha="0.6"
+                android:src="@drawable/ic_desert"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+                android:id="@+id/id_activity_history_tickets_tumbleweed"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_tumbleweed"
+                android:translationX="-30dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,14 +3,10 @@ package sk.rafig.mhdke.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.room.Room
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_splash.*
 import sk.rafig.mhdke.R
-import sk.rafig.mhdke.api.UsersDatabase
 import sk.rafig.mhdke.viewmodel.SplashViewModel
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
@@ -26,7 +22,25 @@ class SplashActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application))
             .get(SplashViewModel::class.java)
 
-        viewModel.splash()
+        viewModel.splash().observe(this, Observer {
+            if (it != null) {
+                startActivity(Intent(applicationContext, it))
+            }
+        })
 
+        id_splash_main_splash.setOnClickListener {
+            viewModel.splash().observe(this, Observer {
+                if (it != null) {
+                    startActivity(Intent(applicationContext, it))
+                }
+            })
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        onRestart()
     }
 }

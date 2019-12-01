@@ -9,46 +9,43 @@ import android.os.Handler
 import android.provider.Telephony
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_ticket.*
 import org.hotovo.mhdke.viewmodel.TicketViewModel
 import sk.rafig.mhdke.R
-import sk.rafig.mhdke.api.Cache
-import sk.rafig.mhdke.api.sms.SmsReciever
-import sk.rafig.mhdke.model.Ticket
+import sk.rafig.mhdke.api.local.Cache
+import sk.rafig.mhdke.api.service.SmsReciever
+import sk.rafig.mhdke.ui.toolbar.Toolbar
+import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.util.Animator
 import sk.rafig.mhdke.util.ContextTags
+import sk.rafig.mhdke.util.SmsSpecs
+import sk.rafig.mhdke.util.TimeUtil
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 import java.util.*
 
 class TicketActivity : AppCompatActivity() {
     private val TAG = this.javaClass.simpleName
-    private val phoneNumber = "0908266949"
-    private val smsBody = "hi"
-    private val receiver = SmsReciever()
+    private lateinit var receiver: SmsReciever
     private lateinit var viewModel: TicketViewModel
     private lateinit var runnable: Runnable
     private var handler = Handler()
-    var value = "ERROR"
-    var body = ""
 
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ticket)
+        setActionBar(findViewById(R.id.id_activity_ticket_toolbar))
+        Toolbar.createToolbar(this, ToolbarColor.BLACK, false)
+
+        receiver = SmsReciever()
         registerReceiver(receiver, IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION))
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application))
             .get(TicketViewModel::class.java)
-
-
-        viewModel.getUser().observe(this, Observer {
-            Log.d(this.javaClass.simpleName, it.userName)
-        })
 
         viewModel.ticketWaiting().observe(this, Observer {
             if (it) {
@@ -56,44 +53,36 @@ class TicketActivity : AppCompatActivity() {
             } else {
                 toBuy()
             }
-
             //what if still waiting ut closed the app?
         })
 
+        id_activity_ticket_time_remaining.setText(TimeUtil.formatText(SmsSpecs.length))
 
-        viewModel.getTicket().observe(this, Observer {
-            if (it != null) {
-                Log.d(TAG, it.boughtOn)
-                Log.d(TAG, it.id)
-            }
-        })
+        id_activity_ticket_ticket_buy_ticket.setOnClickListener {
+            viewModel.sendSms()
+            waiting()
+        }
+
+        id_activity_ticket_history_button.setOnClickListener {
+            startActivity(Intent(applicationContext, HistoryActivity::class.java))
+        }
 
         runnable = Runnable {
-            if (!Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)) {
-                receiver.setOnReceiveListener {
+            receiver.setOnReceiveListener {
+                if (!Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)) {
                     viewModel.addTicet(UUID.randomUUID().toString(), it)
-                    Log.d(TAG, "HERE I AM")
-                    startActivity(Intent(applicationContext, ActiveTicketActivity::class.java))
-                    body = it
                 }
-            } else {
-                Log.d(TAG, viewModel.getTime().toString())
             }
 
-            Log.d(TAG, body)
             handler.postDelayed(runnable, 1000)
         }
         handler.postDelayed(runnable, 1000)
     }
 
 
-
     fun toBuy() {
         Log.d(TAG, "YOU MAY BUY")
-        id_activity_ticket_ticket_buy_ticket.setOnClickListener {
-            viewModel.sendSms()
-            waiting()
-        }
+
         Animator().pulseAnimation(id_activity_ticket_primary_pulse, 1000)
         Animator().stopAnimation(id_activity_ticket_secondary_pulse)
         id_activity_ticket_sms_title.setText(R.string.ticket_sms_send)
@@ -123,4 +112,10 @@ class TicketActivity : AppCompatActivity() {
         unregisterReceiver(receiver)
         handler.removeCallbacks(runnable)
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(Intent(applicationContext, SplashActivity::class.java))
+    }
+
 }

@@ -16,9 +16,9 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
-            android:text="@string/string_activity_ticket_default_time"
             android:textSize="40sp"
             android:textStyle="bold"
+            android:id="@+id/id_activity_ticket_time_remaining"
             android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -128,6 +128,16 @@
                 android:layout_height="212dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+            android:id="@+id/id_activity_ticket_history_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_history_drk"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/id_activity_ticket_pulse_animation"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
             android:orientation="vertical"

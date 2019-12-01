@@ -9,4 +9,6 @@ object ContextTags {
     val TICKET_ENDS = "TICKET_END"
     val TICKET_RECEIVED = "TICKET_RECEIVED"
     val TIME_LEFT = "TIME_LEFT"
+
+    val HISTORY_TICKET_ID = "HISTORY_TICKET_ID"
 }
