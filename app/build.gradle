@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.1"
+    buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "sk.rafig.mhdke"
         minSdkVersion 21
@@ -55,7 +55,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:2.1.0"
 
     //firebase
-    implementation 'com.google.firebase:firebase-database:18.0.1'
+    implementation 'com.google.firebase:firebase-database:19.2.0'
 
     //g maps
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
