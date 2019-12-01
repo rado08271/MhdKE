@@ -8,6 +8,8 @@
           android:translateY="28">
     <path
             android:pathData="M8 0H304A8 8 0 0 1 312 8V520A8 8 0 0 1 304 528H8A8 8 0 0 1 0 520V8A8 8 0 0 1 8 0Z"
-            android:fillColor="#FFFFFF" />
+            android:strokeColor="#ffff"
+            android:strokeWidth="2"
+            android:fillColor="#0fff" />
   </group>
 </vector>

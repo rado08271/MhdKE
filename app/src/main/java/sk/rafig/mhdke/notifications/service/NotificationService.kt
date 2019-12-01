@@ -15,6 +15,7 @@ import java.util.*
 class NotificationService(): Service(){
 
     private val CHANNEL_ID = "TiketNotificationChannel"
+    private val CHANNEL_ID_QUICK_UPDATES = "TiketNotificationChannel"
 //    private val notification = NotificationCreate(applicationContext, CHANNEL_ID)
 
     companion object {
@@ -22,6 +23,7 @@ class NotificationService(): Service(){
             val startIntent = Intent(context, NotificationService::class.java)
             ContextCompat.startForegroundService(context, startIntent)
         }
+
         fun stopService(context: Context) {
             val stopIntent = Intent(context, NotificationService::class.java)
             context.stopService(stopIntent)
@@ -38,11 +40,9 @@ class NotificationService(): Service(){
             override fun run() {
                 val timeLeft = TimeUtil.getTime(application)
                 if ( timeLeft.toInt() == 0) {
-                    Log.d("WOW", "HERE")
                     startForeground(startId, notification.createNotification("RUN OUT", "NO TIME LEFT", startId))
                 } else if (timeLeft.toInt() == 10) {
-                    Log.d("WOW", "wwwwwwHERE")
-                    startForeground(startId, notification.createNotification("Running Out", "You have 10 seconds left", startId))
+//                    startForeground(startId, notification.createNotification("Running Out", "You have 10 seconds left", startId))
                 } else if (timeLeft.toInt() > 0) {
                     startForeground(666, notification.countDownNotification(TimeUtil.formatText(timeLeft), 666))
                 }

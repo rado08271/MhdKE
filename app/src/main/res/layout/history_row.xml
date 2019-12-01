@@ -29,6 +29,9 @@
 
             <TextView
                     android:id="@+id/history_row_ticket_id"
+                    android:maxLines="1"
+                    android:maxLength="30"
+                    android:text="asdfsdfsaddsfasdfasdfasdfasdfasdfasdfasdfasdfadfasdfasdfasdfasdfasdf"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </LinearLayout>

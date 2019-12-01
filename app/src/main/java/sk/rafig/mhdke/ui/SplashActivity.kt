@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_splash.*
+import sk.rafig.mhdke.BuildConfig
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.viewmodel.SplashViewModel
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
@@ -27,6 +28,8 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(Intent(applicationContext, it))
             }
         })
+
+        id_splash_build_version.text = "v." + BuildConfig.VERSION_NAME + BuildConfig.VERSION_CODE
 
         id_splash_main_splash.setOnClickListener {
             viewModel.splash().observe(this, Observer {

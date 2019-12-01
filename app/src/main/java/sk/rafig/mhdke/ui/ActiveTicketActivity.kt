@@ -29,14 +29,14 @@ class ActiveTicketActivity : AppCompatActivity() {
     private lateinit var runnable: Runnable
     private lateinit var viewModel: ActiveTicketViewModel
     private val TAG = this.javaClass.simpleName
-
+    private var fakeTime = 200L
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_active_ticket)
         setActionBar(findViewById(R.id.id_activity_active_toolbar))
         Toolbar.createToolbar(this, ToolbarColor.WHITE, false)
-        NotificationService.startService(this, "Msg")
+//        NotificationService.startService(this, "Msg")
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application))
             .get(ActiveTicketViewModel::class.java)
@@ -69,7 +69,7 @@ class ActiveTicketActivity : AppCompatActivity() {
 //                 id_activity_ticket_time_remaining.setText(viewModel.formatText(viewModel.getTime()))
                 viewModel.getTime().observe(this, Observer {
                     if (it < 0) {
-                        viewModel.ticketExpired()
+//                        viewModel.ticketExpired()
                     }
 
 //                    if (it == 10.toLong()) {
@@ -82,6 +82,7 @@ class ActiveTicketActivity : AppCompatActivity() {
                 })
 
             }
+            id_activity_active_time_remaining.setText(TimeUtil.formatText(fakeTime--))
 
             handler.postDelayed(runnable, 1000)
         }

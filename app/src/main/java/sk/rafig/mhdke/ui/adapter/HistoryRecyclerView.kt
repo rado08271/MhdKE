@@ -2,6 +2,8 @@ package sk.rafig.mhdke.ui.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.icu.text.SimpleDateFormat
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,8 @@ import sk.rafig.mhdke.R
 import sk.rafig.mhdke.model.Ticket
 import sk.rafig.mhdke.ui.TicketPreviewActivity
 import sk.rafig.mhdke.util.ContextTags
+import java.sql.Timestamp
+import java.util.*
 
 class HistoryRecyclerView(private val context: Context, private val tickets:List<Ticket>):
     RecyclerView.Adapter<HistoryViewHolder>() {
@@ -27,7 +31,12 @@ class HistoryRecyclerView(private val context: Context, private val tickets:List
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.history_row_ticket_id.text = tickets[position].id
-        holder.history_row_time.text = tickets[position].boughtOn
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            holder.history_row_time.text = SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(Date(tickets[position].boughtOn.toLong()))
+        } else {
+            holder.history_row_time.text = Timestamp(tickets[position].boughtOn.toLong()).time.toString()
+        }
 
         holder.view.setOnClickListener{
             val intent = Intent(context, TicketPreviewActivity::class.java)

@@ -26,7 +26,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-                android:src="@drawable/ic_pulse_signal"
+                android:src="@drawable/permission_icon"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginBottom="72dp"/>

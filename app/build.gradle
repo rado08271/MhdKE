@@ -11,7 +11,7 @@ android {
         applicationId "sk.rafig.mhdke"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
+        versionCode 3
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         setProperty("archivesBaseName", "plant-les-v$versionName.$versionCode")
@@ -88,17 +88,20 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
 
     //kotlin coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
+    //  Coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
 
     //glide
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
     // Room components
-    implementation "androidx.room:room-runtime:2.2.1"
-    implementation "androidx.room:room-ktx:2.2.1"
-    kapt "androidx.room:room-compiler:2.2.1"
-    androidTestImplementation "androidx.room:room-testing:2.2.1"
+    implementation "androidx.room:room-runtime:2.2.2"
+    implementation "androidx.room:room-ktx:2.2.2"
+    kapt "androidx.room:room-compiler:2.2.2"
+    androidTestImplementation "androidx.room:room-testing:2.2.2"
 
     // Lifecycle components
     //lifecycle = https://developer.android.com/jetpack/androidx/releases/lifecycle
@@ -106,9 +109,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
     kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-
-    //  Coroutines
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
 
     // UI
     implementation "com.google.android.material:material:1.0.0"

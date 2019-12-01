@@ -18,6 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
+            android:background="@drawable/ic_preview_border"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/id_activity_active_ticket_preview_toolbar">
@@ -34,7 +35,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="68dp"
                     android:layout_marginBottom="100dp"
-                    android:text="@string/ticket_ticket_active" />
+                    android:text="@string/string_activity_preview_expired_ticket" />
 
             <TextView
                     android:id="@+id/id_activity_active_ticket_preview_fragmentreceived_ticket_message"

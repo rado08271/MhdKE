@@ -64,7 +64,7 @@ class TicketViewModel(private val application: Application) : ViewModel() {
             return MutableLiveData<Boolean>(true)
         } else {
             Cache.addValueToCache(ContextTags.TICKET_RECEIVED, false, application)
-            Cache.addValueToCache(ContextTags.TICKET_ENDS, 0, application)
+            Cache.addValueToCache(ContextTags.TICKET_ENDS, 0L, application)
 
             return MutableLiveData<Boolean>(false)
 

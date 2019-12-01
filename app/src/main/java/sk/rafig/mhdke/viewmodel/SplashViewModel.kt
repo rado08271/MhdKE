@@ -27,8 +27,8 @@ class SplashViewModel(private val application: Application): ViewModel() {
     fun createUser(){
         viewModelScope.launch {
             Log.d("USER", "CREATING USER")
-            val userRemote = UserRemote(userName = "user", tickets = listOf())
-            val user = User(id = userRemote.id, userName = "user")
+            val userRemote = UserRemote(tickets = listOf())
+            val user = User(id = userRemote.id)
 
             userRepository.createPerson(user)
             UserServiceFirebase.addUser(userRemote)
@@ -51,7 +51,8 @@ class SplashViewModel(private val application: Application): ViewModel() {
             return MutableLiveData<Class<*>>(LegalActivity::class.java)
         } else {
 //            application.startActivity(Intent(application.applicationContext, TicketActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-            return MutableLiveData<Class<*>>(AllowActivity::class.java)
+//            return MutableLiveData<Class<*>>(AllowActivity::class.java)
+            return MutableLiveData<Class<*>>(ActiveTicketActivity::class.java)
         }
     }
 }
