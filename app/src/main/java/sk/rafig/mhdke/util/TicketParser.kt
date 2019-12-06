@@ -4,7 +4,10 @@ import sk.rafig.mhdke.model.Ticket
 import java.util.*
 
 object TicketParser {
-    fun parseTicket(smsBody: String, userId: String, boughtTime: Long): Ticket {
+    fun parseTicket(sms: String, userId: String, boughtTime: Long): Ticket {
+        var smsBody = sms
+        smsBody = smsBody.replace("\r","")
+
 //        val id = /////TODOO
         if (smsBody.length != 88) {
             return Ticket(

@@ -34,7 +34,7 @@ class HistoryRecyclerView(private val context: Context, private val tickets:List
         holder.history_row_ticket_id.text = tickets[position].ticketCode
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            holder.history_row_time.text = SimpleDateFormat("dd.MM.yyyy - HH:mm:ss").format(Date(tickets[position].boughtOn.toLong()))
+            holder.history_row_time.text = SimpleDateFormat("dd.MM.yyyy - HH:mm:ss").format(Date(tickets[position].validFrom))
         } else {
             holder.history_row_time.text = Timestamp(tickets[position].boughtOn.toLong()).time.toString()
         }

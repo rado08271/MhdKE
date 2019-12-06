@@ -67,9 +67,9 @@ class CurrentTicketPreview : AppCompatActivity() {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 id_current_preview_valid_from.text =
-                    SimpleDateFormat("dd.MM.yyyy - HH:mm:ss").format(Date(it.validFrom))
+                    SimpleDateFormat("HH:mm:ss").format(Date(it.validFrom))
                 id_current_preview_valid_till.text =
-                    SimpleDateFormat("dd.MM.yyyy - HH:mm:ss").format(Date(it.validTill))
+                    SimpleDateFormat("HH:mm:ss").format(Date(it.validTill))
 
             } else {
 
