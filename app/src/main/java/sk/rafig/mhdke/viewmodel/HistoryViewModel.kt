@@ -14,6 +14,14 @@ class HistoryViewModel(private val application: Application) : ViewModel() {
 
     fun getTickets(): LiveData<List<Ticket>>{
         return UserServiceFirebase.getAllTickets(Cache.getString(ContextTags.USER_ID, application))
+
+//        val sorted = ticketes!!.sortedWith(compareBy {it.validTill})
+//
+//         if value is older then 60 minutes show otherwise don't
+//
+//        tickets.value = sorted
+//
+//        return tickets
     }
 
 }

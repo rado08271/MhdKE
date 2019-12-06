@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -13,14 +12,16 @@ import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_active_ticket.*
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.api.local.Cache
+import sk.rafig.mhdke.model.Ticket
 import sk.rafig.mhdke.notifications.service.NotificationService
-import sk.rafig.mhdke.ui.toolbar.Toolbar
+import sk.rafig.mhdke.ui.toolbar.CustomToolbar
 import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.util.ContextTags
 import sk.rafig.mhdke.util.SmsSpecs
 import sk.rafig.mhdke.util.TimeUtil
 import sk.rafig.mhdke.viewmodel.ActiveTicketViewModel
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
+import kotlin.concurrent.thread
 
 class ActiveTicketActivity : AppCompatActivity() {
     private val handler = Handler()
@@ -31,8 +32,8 @@ class ActiveTicketActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_active_ticket)
-        setActionBar(findViewById(R.id.id_activity_active_toolbar))
-        Toolbar.createToolbar(this, ToolbarColor.WHITE, false)
+        setSupportActionBar(findViewById(R.id.id_activity_active_toolbar))
+        CustomToolbar.createToolbar(this, ToolbarColor.WHITE, false)
         NotificationService.startService(this)
         initProgress()
 
@@ -43,41 +44,43 @@ class ActiveTicketActivity : AppCompatActivity() {
             Log.d(this.javaClass.simpleName, it.userName)
         })
 
-        id_activity_active_show_ticket.setOnClickListener {
+        runOnUiThread {
             viewModel.getTicket().observe(this, Observer {
-                if (it != null) {
-                    id_activity_active_ticket_preview_fragment.visibility = View.VISIBLE
-                    TicketFragment.createFragmentLight(this, it)
+                id_activity_active_image_background.setOnClickListener {
+                    if (it != null) {
+                        NotificationService.stopService(this)
+                        handler.removeCallbacks(runnable)
+                        startActivity(Intent(applicationContext,CurrentTicketPreview::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+                        finish()
+                    }
                 }
             })
+
         }
 
-        id_activity_active_ticket_fragment_close_fragment.setOnClickListener {
-            id_activity_active_ticket_preview_fragment.visibility = View.GONE
-        }
-
-        id_activity_active_time_remaining.text = TimeUtil.formatText(SmsSpecs.length)
         id_activity_active_history_button.setOnClickListener {
             startActivity(Intent(applicationContext, HistoryActivity::class.java))
         }
 
-        runnable = Runnable {
-            if (Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)) {
-                // TODO received
-                viewModel.getTime().observe(this, Observer {
-                    if (it < 0) {
-                        viewModel.ticketExpired()
-                    }
+        thread {
+            runnable = Runnable {
+                if (Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)) {
+                    // TODO received
+                    viewModel.getTime().observe(this, Observer {
+                        if (it < 0) {
+                            viewModel.ticketExpired()
+                        }
 
-                    id_activity_active_time_remaining.text = TimeUtil.formatText(it)
-                    id_activity_active_progress.progress = it.toInt()
-                })
+                        id_activity_active_time_remaining.text = TimeUtil.formatText(it)
+                        id_activity_active_progress.progress = it.toInt()
+                    })
+                }
+
+                handler.postDelayed(runnable, 1000)
             }
-
             handler.postDelayed(runnable, 1000)
-        }
-        handler.postDelayed(runnable, 1000)
 
+        }
     }
 
     override fun onBackPressed() {
@@ -88,9 +91,13 @@ class ActiveTicketActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         NotificationService.stopService(this)
+        handler.removeCallbacks(runnable)
     }
 
-    private fun initProgress(){
+    private fun initProgress() {
         id_activity_active_progress.max = SmsSpecs.length.toInt()
+    }
+
+    private fun showTicket(ticket: Ticket) {
     }
 }

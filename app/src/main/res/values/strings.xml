@@ -10,18 +10,20 @@
     <string name="allow_access">Povoliť prístup</string>
     <string name="close_app">Zavrieť aplikáciu</string>
     <string name="oops_text">Šmaria! Obávam sa, že bez povolenia prístupu k SMS nemôže aplikácia fungovať.</string>
-    <string name="ticket_buy">Kúpiť</string>
+    <string name="ticket_buy">Kúpiť lístok</string>
     <string name="ticket_sms_send">Stlačením tlačidla bude odoslaná prázdna SMS na tel. číslo 1166.</string>
     <string name="ticket_sms_press">Stlačením tlačidla zobrazíte aktuálny lístok revízorovi</string>
-    <string name="ticket_sms_price">Cena SMS: 1,20 EUR</string>
+    <string name="ticket_sms_price">Cena SMS: 1,10 EUR</string>
     <string name="ticket_ticket_active">Aktívny lístok</string>
-    <string name="allow_agree">Súhlasím</string>
+    <string name="allow_agree">Povoliť</string>
     <string name="legal_agree">Súhlasím</string>
     <string name="legal_toast_error">Prepacte ale pre nás slúži vas suhlas sluzi ako právny základ, fungujeme na etických princípoch!</string>
     <string name="string_activity_ticket_default_time" translatable="false">60:00</string>
-    <string name="string_activity_ticket_ticket_to_show">Lístok</string>
+    <string name="string_activity_ticket_ticket_to_show">Zobraziť lístok</string>
     <string name="string_activity_ticket_ticket_waiting_for">Váš lístok je na ceste…</string>
     <string name="string_activity_legal_gdpr" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
     <string name="string_activity_preview_expired_ticket">Expirovaný lístok</string>
     <string name="string_activity_ticket_history">Historia listkov</string>
+    <string name="string_fragment_ticket_type">Typ:</string>
+    <string name="string_fragment_ticket_price">Cena:</string>
 </resources>

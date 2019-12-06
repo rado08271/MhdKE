@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.Toolbar
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
@@ -14,7 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import sk.rafig.mhdke.viewmodel.AllowViewModel
-import sk.rafig.mhdke.ui.toolbar.Toolbar
+import sk.rafig.mhdke.ui.toolbar.CustomToolbar
 import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
@@ -28,8 +29,8 @@ class AllowActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_allow)
-        setActionBar(findViewById(R.id.id_activity_allow_toolbar))
-        Toolbar.createToolbar(this, ToolbarColor.BLACK, false)
+        setSupportActionBar(findViewById(R.id.id_activity_allow_toolbar))
+        CustomToolbar.createToolbar(this, ToolbarColor.BLACK, false)
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application)).get(AllowViewModel::class.java)
 
@@ -40,7 +41,7 @@ class AllowActivity : AppCompatActivity() {
             startActivity(Intent(applicationContext, TicketActivity::class.java))
         }
 
-        //Dexter will take care of it!
+
         allow_agree.setOnClickListener{
             Dexter.withActivity(this)
                 .withPermissions(SEND_PERMISSION, RECEIVE_PERMISSION )
@@ -60,18 +61,10 @@ class AllowActivity : AppCompatActivity() {
                         }
                     }
 
-//                    override fun onPermissionGranted(response: PermissionGrantedResponse?) {
-//                    }
-//                    override fun onPermissionRationaleShouldBeShown( permission: PermissionRequest?, token: PermissionToken?) {                    }
-//                    override fun onPermissionDenied(response: PermissionDeniedResponse?) {
-//                    }
                 })
                 .check()
         }
 
-        allow_disagree.setOnClickListener {
-            startActivity(Intent(applicationContext, OopsActivity::class.java))
-        }
     }
 
 

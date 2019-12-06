@@ -12,9 +12,9 @@
     <string name="string_activity_preview_expired_ticket">Exired ticket</string>
     <string name="string_activity_ticket_ticket_to_show">Ticket</string>
     <string name="string_activity_ticket_ticket_waiting_for">Your ticket is coming...</string>
-    <string name="ticket_buy">Buy</string>
+    <string name="ticket_buy">Buy ticket</string>
     <string name="ticket_sms_press">By pressing this button you will show current ticket to inspector</string>
-    <string name="ticket_sms_price">Price of SMS: 1,20 EUR</string>
+    <string name="ticket_sms_price">Price of SMS: 1,10 EUR</string>
     <string name="ticket_sms_send">By pressing the button empty SMS will be sent to 1166</string>
     <string name="ticket_ticket_active">Current ticket</string>
     <string name="tiket_about_short_info">Tiket is an app, which makes buying your transportation ticket quick and easy. Everything is one click away!</string>

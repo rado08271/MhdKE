@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Telephony
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.Observer
@@ -17,14 +16,11 @@ import sk.rafig.mhdke.viewmodel.TicketViewModel
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.api.local.Cache
 import sk.rafig.mhdke.api.service.SmsReciever
-import sk.rafig.mhdke.ui.toolbar.Toolbar
+import sk.rafig.mhdke.ui.toolbar.CustomToolbar
 import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.util.Animator
 import sk.rafig.mhdke.util.ContextTags
-import sk.rafig.mhdke.util.SmsSpecs
-import sk.rafig.mhdke.util.TimeUtil
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
-import java.util.*
 
 class TicketActivity : AppCompatActivity() {
     private val TAG = this.javaClass.simpleName
@@ -38,8 +34,8 @@ class TicketActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ticket)
-        setActionBar(findViewById(R.id.id_activity_ticket_toolbar))
-        Toolbar.createToolbar(this, ToolbarColor.BLACK, false)
+        setSupportActionBar(findViewById(R.id.id_activity_ticket_toolbar))
+        CustomToolbar.createToolbar(this, ToolbarColor.BLACK, false)
 
         receiver = SmsReciever()
         registerReceiver(receiver, IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION))
@@ -56,8 +52,6 @@ class TicketActivity : AppCompatActivity() {
             //what if still waiting ut closed the app?
         })
 
-        id_activity_ticket_time_remaining.text = TimeUtil.formatText(SmsSpecs.length)
-
         id_activity_ticket_ticket_buy_ticket.setOnClickListener {
             viewModel.sendSms()
             waiting()
@@ -70,7 +64,9 @@ class TicketActivity : AppCompatActivity() {
         runnable = Runnable {
             receiver.setOnReceiveListener {
                 if (!Cache.getBoolean(ContextTags.TICKET_RECEIVED, application)) {
-                    viewModel.addTicet(UUID.randomUUID().toString(), it)
+                    id_activity_ticket_button_image.visibility = View.INVISIBLE
+                    Animator.scaleAnimation(id_activity_ticket_background_view_animation, 1000)
+                    viewModel.addTicet(it)
                 }
             }
 
@@ -81,30 +77,25 @@ class TicketActivity : AppCompatActivity() {
 
 
     private fun toBuy() {
-        Log.d(TAG, "YOU MAY BUY")
-
-        Animator().pulseAnimation(id_activity_ticket_primary_pulse, 1000)
-        Animator().stopAnimation(id_activity_ticket_secondary_pulse)
-        id_activity_ticket_sms_title.setText(R.string.ticket_sms_send)
+        Animator.pulseAnimation(id_activity_ticket_primary_pulse, 1000)
+        Animator.stopAnimation(id_activity_ticket_secondary_pulse)
+        id_activity_ticket_sms_title.setText(R.string.ticket_sms_price)
         id_activity_ticket_ticket_buy_ticket.visibility = View.VISIBLE
         id_activity_ticket_loading_button.visibility = View.GONE
         id_activity_ticket_primary_pulse.visibility = View.VISIBLE
         id_activity_ticket_secondary_pulse.visibility = View.INVISIBLE
         id_activity_ticket_sms_title.visibility = View.VISIBLE
-        id_activity_ticket_sms_price.visibility = View.VISIBLE
     }
 
     private fun waiting() {
-        Log.d(TAG, "WAITING")
-        Animator().pulseAnimation(id_activity_ticket_primary_pulse, 1000)
-        Animator().pulseAnimation(id_activity_ticket_secondary_pulse, 1200)
+        Animator.pulseAnimation(id_activity_ticket_primary_pulse, 1000)
+        Animator.pulseAnimation(id_activity_ticket_secondary_pulse, 1200)
         id_activity_ticket_sms_title.setText(R.string.string_activity_ticket_ticket_waiting_for)
         id_activity_ticket_ticket_buy_ticket.visibility = View.GONE
         id_activity_ticket_loading_button.visibility = View.VISIBLE
         id_activity_ticket_primary_pulse.visibility = View.VISIBLE
         id_activity_ticket_secondary_pulse.visibility = View.VISIBLE
         id_activity_ticket_sms_title.visibility = View.VISIBLE
-        id_activity_ticket_sms_price.visibility = View.GONE
     }
 
     override fun onDestroy() {

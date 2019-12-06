@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.toolbar.*
 import sk.rafig.mhdke.viewmodel.ToolbarViewModel
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
-class Toolbar {
+class CustomToolbar {
     companion object {
 
         fun createToolbar(view: AppCompatActivity, color: ToolbarColor, back: Boolean) {

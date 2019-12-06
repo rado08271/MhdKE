@@ -38,11 +38,11 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
-    <View
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/shadow" />
+<!--    <View-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:background="@drawable/shadow" />-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="96dp"

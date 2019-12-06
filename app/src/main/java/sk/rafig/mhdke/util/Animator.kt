@@ -3,12 +3,13 @@ package sk.rafig.mhdke.util
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.content.Context
 import android.graphics.Color
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 
-class Animator {
+object Animator {
 
     fun stopAnimation(view: View){
         val animation: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
@@ -18,12 +19,25 @@ class Animator {
         animation.repeatCount = 0
     }
 
+    fun scaleAnimation(view: View, timeMs: Long) {
+        val animation: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
+            view,
+            PropertyValuesHolder.ofFloat("scaleX", 1000f),
+            PropertyValuesHolder.ofFloat("scaleY", 1000f)
+        )
+
+        animation.duration = timeMs
+        animation.repeatCount = 1
+        animation.interpolator = FastOutSlowInInterpolator()
+        animation.start()
+    }
+
     fun pulseAnimation(view: View, timeMs: Long){
         val animation: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
-                view,
-                PropertyValuesHolder.ofFloat("scaleX", 1.2f),
-                PropertyValuesHolder.ofFloat("scaleY", 1.2f)
-            )
+            view,
+            PropertyValuesHolder.ofFloat("scaleX", 1.2f),
+            PropertyValuesHolder.ofFloat("scaleY", 1.2f)
+        )
         animation.duration = timeMs
         animation.repeatCount = ObjectAnimator.INFINITE
         animation.repeatMode = ObjectAnimator.REVERSE
@@ -44,7 +58,7 @@ class Animator {
         animation.start()
     }
 
-    fun emptyAnimation(view: View, speed: Long, toLeft: Float){
+    fun emptyAnimation(view: View, speed: Long){
         val animation: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(
             view,
             PropertyValuesHolder.ofFloat("translationX", 350f),

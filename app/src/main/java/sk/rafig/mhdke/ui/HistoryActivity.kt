@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_history.*
 import sk.rafig.mhdke.viewmodel.HistoryViewModel
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.ui.adapter.HistoryRecyclerView
-import sk.rafig.mhdke.ui.toolbar.Toolbar
+import sk.rafig.mhdke.ui.toolbar.CustomToolbar
 import sk.rafig.mhdke.ui.toolbar.ToolbarColor
 import sk.rafig.mhdke.util.Animator
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
@@ -22,10 +22,10 @@ class HistoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_history)
-        setActionBar(findViewById(R.id.id_activity_history_toolbar))
-        Toolbar.createToolbarWithBackButton(this, ToolbarColor.WHITE, TicketActivity::class.java)
+        setSupportActionBar(findViewById(R.id.id_activity_history_toolbar))
+        CustomToolbar.createToolbarWithBackButton(this, ToolbarColor.WHITE, TicketActivity::class.java)
 
-        Animator().emptyAnimation(id_activity_history_tickets_tumbleweed, 2500, 0f)
+        Animator.emptyAnimation(id_activity_history_tickets_tumbleweed, 2500)
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application)).get(HistoryViewModel::class.java)
 
         viewModel.getTickets().observe(this, Observer {

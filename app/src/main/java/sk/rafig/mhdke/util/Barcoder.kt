@@ -10,15 +10,15 @@ import com.google.zxing.common.BitMatrix
 import com.journeyapps.barcodescanner.BarcodeEncoder
 
 object Barcoder {
-    fun createBarcodeFromString(text: String): Bitmap {
+    fun createQrCodeFromString(text: String): Bitmap {
         var bitmap: Bitmap
         try {
-            val bits: BitMatrix = MultiFormatWriter().encode(text, BarcodeFormat.CODE_128, 100, 250)
+            val bits: BitMatrix = MultiFormatWriter().encode(text, BarcodeFormat.QR_CODE, 100, 250)
             val encoder = BarcodeEncoder()
             bitmap = encoder.createBitmap(bits)
 
         } catch (e: WriterException) {
-            bitmap = Bitmap.createBitmap(140, 60, Bitmap.Config.ALPHA_8)
+            bitmap = Bitmap.createBitmap(800, 800, Bitmap.Config.ALPHA_8)
             Log.e("ZGING", "Write Error", e)
         }
 
@@ -26,6 +26,6 @@ object Barcoder {
     }
 
     fun fillViewWithBarcodeFromString(view: ImageView, text: String) {
-        view.setImageBitmap(createBarcodeFromString(text))
+        view.setImageBitmap(createQrCodeFromString(text))
     }
 }

@@ -37,6 +37,9 @@ class ViewModelFactory(val application: Application): ViewModelProvider.Factory 
             modelClass.isAssignableFrom(ToolbarViewModel::class.java) ->
                 ToolbarViewModel(application) as T
 
+            modelClass.isAssignableFrom(CurrentTicketViewModel::class.java) ->
+                CurrentTicketViewModel(application) as T
+
             else -> throw IllegalArgumentException("Unknown Viewmodel class!")
         }
     }

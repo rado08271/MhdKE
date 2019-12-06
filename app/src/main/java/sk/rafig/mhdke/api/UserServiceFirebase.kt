@@ -56,7 +56,9 @@ object UserServiceFirebase {
                     list.add(tiket)
                 }
 
-                tickets.value = list
+                val sorted = list.sortedWith(compareBy(Ticket::boughtOn))
+
+                tickets.value = sorted
             }
         })
         return tickets

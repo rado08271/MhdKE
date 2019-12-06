@@ -18,5 +18,17 @@ data class Ticket (
     val userId: String = "",
 
     @ColumnInfo(name = "column_body")
-    val columnBody: String = ""
+    val columnBody: String = "",
+
+    @ColumnInfo(name = "price")
+    val price: String = "",
+
+    @ColumnInfo(name = "valid_from")
+    val validFrom: Long = 0L,
+
+    @ColumnInfo(name = "valid_till")
+    val validTill: Long = 0L,
+
+    @ColumnInfo(name = "ticket_code")
+    val ticketCode: String = ""
 )
