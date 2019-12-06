@@ -19,7 +19,6 @@ object TimeUtil {
     }
 
     fun formatText(time: Long): String {
-        Log.d("TIME", "" + (time))
         if ( time <= 0) {
             return "00:00"
         }

@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.supervisorScope
+import sk.rafig.mhdke.R
 import sk.rafig.mhdke.notifications.NotificationCreate
 import sk.rafig.mhdke.util.TimeUtil
 import java.util.*
@@ -44,18 +45,27 @@ class NotificationService : Service() {
                     timeLeft.toInt() == 0 -> {
                         startForeground(
                             startId,
-                            notification.createNotification("RUN OUT", "NO TIME LEFT", startId)
+                            notification.createNotification(
+                                applicationContext.getString(R.string.string_notification_expired_titlte),
+                                applicationContext.getString(R.string.string_notification_expired_text),
+                                startId)
                         )
                     }
 
-                    timeLeft.toInt() == 10 -> {
-                        //                    startForeground(startId, notification.createNotification("Running Out", "You have 10 seconds left", startId))
+                    timeLeft.toInt() == 300 -> {
+                        //CONSIDER or 10% till finish?
+                        notification.createNotification(
+                            applicationContext.getString(R.string.string_notification_to_expire_title),
+                            applicationContext.getString(R.string.string_notification_to_expire_text),
+                            startId)
                     }
 
                     timeLeft.toInt() > 0 -> {
                         startForeground(
                             666,
-                            notification.countDownNotification(TimeUtil.formatText(timeLeft), 666)
+                            notification.countDownNotification(
+                                applicationContext.getString(R.string.string_notification_to_expire_title),
+                                TimeUtil.formatText(timeLeft), 666)
                         )
                     }
                 }

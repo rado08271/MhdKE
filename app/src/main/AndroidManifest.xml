@@ -18,8 +18,8 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme.Light">
         <activity
-                android:noHistory="true"
-                android:name=".ui.CurrentTicketPreview"></activity>
+                android:name=".ui.CurrentTicketPreview"
+                android:screenOrientation="portrait" ></activity>
 
         <receiver
                 android:name=".api.service.SmsReciever"
@@ -31,8 +31,8 @@
         </receiver>
 
         <activity
+                android:screenOrientation="portrait"
                 android:name=".ui.ActiveTicketActivity"
-                android:noHistory="true"
                 android:parentActivityName=".ui.SplashActivity"
                 android:theme="@style/AppTheme.Dark"></activity>
         <service android:name=".notifications.service.NotificationService"></service>

@@ -36,8 +36,8 @@ class TicketViewModel(private val application: Application) : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.N)
     fun addTicet(body: String){
         viewModelScope.launch {
-            val newBody = "DPMK, a.s.\nSMS prestupny CL 0.80 EUR\nPlatnost od 12-12-2018 15:57 do 16:57 hod.\n87xzhygz"
-            val ticket = TicketParser.parseTicket(newBody, Cache.getString(ContextTags.USER_ID, application), boughtTime)
+//            val newBody = "DPMK, a.s.\nSMS prestupny CL 0.80 EUR\nPlatnost od 12-12-2018 15:57 do 16:57 hod.\n87xzhygz"
+            val ticket = TicketParser.parseTicket(body, Cache.getString(ContextTags.USER_ID, application), boughtTime)
 
             Cache.addValueToCache(ContextTags.TICKET_ID, ticket.id, application)
             Cache.addValueToCache(ContextTags.TICKET_RECEIVED, true, application)

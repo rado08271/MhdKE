@@ -26,4 +26,14 @@
     <string name="string_activity_ticket_history">Historia listkov</string>
     <string name="string_fragment_ticket_type">Typ:</string>
     <string name="string_fragment_ticket_price">Cena:</string>
+    <string name="string_notification_expired_titlte">Expirovany</string>
+    <string name="string_notification_expired_text">Tvoj listok expiroval, prosime kup si novy listok</string>
+    <string name="string_notification_to_expire_title">Aktivny</string>
+    <string name="string_notification_to_expire_text">Zostava 5 minut do expiracie listka</string>
+    <string name="string_type_of_ticket">Prestupny listok</string>
+    <string name="string_dialog_dont_again">Uz nechcem vidiet tento dialog!</string>
+    <string name="string_dialog_ok">Posli</string>
+    <string name="string_dialog_cancel">Zrus</string>
+    <string name="string_dialog_title">Chces poslat sms?</string>
+
 </resources>

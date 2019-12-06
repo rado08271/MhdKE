@@ -13,12 +13,12 @@ object Barcoder {
     fun createQrCodeFromString(text: String): Bitmap {
         var bitmap: Bitmap
         try {
-            val bits: BitMatrix = MultiFormatWriter().encode(text, BarcodeFormat.QR_CODE, 100, 250)
+            val bits: BitMatrix = MultiFormatWriter().encode(text, BarcodeFormat.QR_CODE, 200, 200)
             val encoder = BarcodeEncoder()
             bitmap = encoder.createBitmap(bits)
 
         } catch (e: WriterException) {
-            bitmap = Bitmap.createBitmap(800, 800, Bitmap.Config.ALPHA_8)
+            bitmap = Bitmap.createBitmap(200, 200, Bitmap.Config.ARGB_8888)
             Log.e("ZGING", "Write Error", e)
         }
 

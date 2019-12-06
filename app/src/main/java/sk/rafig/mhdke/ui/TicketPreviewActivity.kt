@@ -81,13 +81,9 @@ class TicketPreviewActivity : AppCompatActivity() {
 
                 id_activity_preview_valid_from.text = Timestamp(it.validFrom).time.toString()
                 id_activity_preview_valid_till.text = Timestamp(it.validTill).time.toString()
-                id_current_preview_received_ticket_QR.setImageBitmap(
-                    Barcoder.createQrCodeFromString(
-                        it.id
-                    )
-                )
+
             }
-            id_activity_preview_received_ticket_QR.setImageBitmap(Barcoder.createQrCodeFromString(it.id))
+            Barcoder.fillViewWithBarcodeFromString(id_activity_preview_received_ticket_QR, it.id)
         } else {
             showLoading()
         }

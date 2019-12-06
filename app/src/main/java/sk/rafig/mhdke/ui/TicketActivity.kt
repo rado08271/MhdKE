@@ -1,5 +1,7 @@
 package sk.rafig.mhdke.ui
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
@@ -7,11 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.provider.Telephony
+import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import kotlinx.android.synthetic.main.activity_ticket.*
+import kotlinx.android.synthetic.main.dialog.*
+import kotlinx.android.synthetic.main.dialog.view.*
 import sk.rafig.mhdke.viewmodel.TicketViewModel
 import sk.rafig.mhdke.R
 import sk.rafig.mhdke.api.local.Cache
@@ -53,8 +59,33 @@ class TicketActivity : AppCompatActivity() {
         })
 
         id_activity_ticket_ticket_buy_ticket.setOnClickListener {
-            viewModel.sendSms()
-            waiting()
+            if (!Cache.getBoolean(ContextTags.SHOW_DIALOG, application)) {
+                val builder = AlertDialog.Builder(this)
+                val view = layoutInflater.inflate(R.layout.dialog, null)
+                builder.setTitle(applicationContext.getString(R.string.string_dialog_title))
+                    .setView(view)
+                    .setCancelable(true)
+                    .setPositiveButton(applicationContext.getString(R.string.string_dialog_ok),
+                        DialogInterface.OnClickListener { dialog, id ->
+                            if (view.id_dialog_checked.isChecked) {
+                                Cache.addValueToCache(ContextTags.SHOW_DIALOG, true, application)
+                            }
+                            viewModel.sendSms()
+                            waiting()
+                        })
+                    .setNegativeButton(applicationContext.getString(R.string.string_dialog_cancel),
+                        DialogInterface.OnClickListener { dialog, id ->
+                            dialog.cancel()
+                            dialog.dismiss()
+
+                        })
+                    .create()
+                    .show()
+            } else {
+                viewModel.sendSms()
+                waiting()
+            }
+
         }
 
         id_activity_ticket_history_button.setOnClickListener {

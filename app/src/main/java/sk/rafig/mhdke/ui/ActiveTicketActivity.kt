@@ -41,17 +41,14 @@ class ActiveTicketActivity : AppCompatActivity() {
             .get(ActiveTicketViewModel::class.java)
 
         viewModel.getUser().observe(this, Observer {
-            Log.d(this.javaClass.simpleName, it.userName)
+//            Log.d(this.javaClass.simpleName, it.userName)
         })
 
         runOnUiThread {
             viewModel.getTicket().observe(this, Observer {
                 id_activity_active_image_background.setOnClickListener {
                     if (it != null) {
-                        NotificationService.stopService(this)
-                        handler.removeCallbacks(runnable)
                         startActivity(Intent(applicationContext,CurrentTicketPreview::class.java).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
-                        finish()
                     }
                 }
             })

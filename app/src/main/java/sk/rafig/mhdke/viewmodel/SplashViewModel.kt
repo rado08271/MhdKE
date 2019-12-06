@@ -23,7 +23,6 @@ class SplashViewModel(private val application: Application): ViewModel() {
 
     private fun createUser(){
         viewModelScope.launch {
-            Log.d("USER", "CREATING USER")
             val userRemote = UserRemote(tickets = listOf())
             val user = User(id = userRemote.id)
 

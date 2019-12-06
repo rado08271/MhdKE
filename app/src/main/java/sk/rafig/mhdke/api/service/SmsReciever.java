@@ -72,7 +72,6 @@ public class SmsReciever extends BroadcastReceiver {
         String format = bundle.getString("format");
         Object[] pdus = (Object[]) bundle.get(pdu_type);
 
-        Log.d("CALLED", "CALLLEEEEED!!!!");
         if (pdus != null) {
             boolean isVersionM = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
             msgs = new SmsMessage[pdus.length];
@@ -86,16 +85,12 @@ public class SmsReciever extends BroadcastReceiver {
                 String number = msgs[i].getOriginatingAddress();
                 String body = msgs[i].getMessageBody();
                 // Log and display the SMS message.
-                Log.d(TAG, "onReceive: " + body);
-                Log.d(TAG, "NUMBER: " + number);
 
                 if (SmsSpecs.serviceProviderNumber.equals(number)) {
                     if (onReceiveListener != null) {
-                        Log.d(TAG, "LISTENER REGISTERED");
                         onReceiveListener.onTextReceived(body);
                     } else {
-                        Log.d(TAG, "PROBLEM!!!");
-
+                        Log.d(TAG, "Problem with receiving msg");
                     }
                 }
             }

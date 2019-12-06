@@ -1,5 +1,8 @@
 package sk.rafig.mhdke.api
 
+import android.app.Application
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DataSnapshot
@@ -8,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import sk.rafig.mhdke.model.Ticket
 import sk.rafig.mhdke.model.UserRemote
+import sk.rafig.mhdke.util.TimeUtil
 
 object UserServiceFirebase {
 
@@ -46,9 +50,16 @@ object UserServiceFirebase {
 
     }
 
-     fun getAllTickets(userId: String): LiveData<List<Ticket>> {
+    fun getAllNewTickets(){
+
+    }
+
+    //FIXME there should not be any application context!!!!!!!!!!!!!!!!!!! <<<< FIX AS SOON AS POSSIBLE!
+    // FIXME fix this shitcode pls!
+    fun getAllTickets(userId: String, application: Application): LiveData<List<Ticket>> {
         ref.child(userId).child("ticket_list").addValueEventListener(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {}
+            @RequiresApi(Build.VERSION_CODES.N)
             override fun onDataChange(p0: DataSnapshot) {
                 val list:ArrayList<Ticket> = arrayListOf()
                 for (s in p0.children) {
@@ -56,9 +67,20 @@ object UserServiceFirebase {
                     list.add(tiket)
                 }
 
-                val sorted = list.sortedWith(compareBy(Ticket::boughtOn))
+                //todo should not be done here!!!
 
-                tickets.value = sorted
+                val newTickets = ArrayList<Ticket>()
+
+                val sorted = list.sortedWith(compareByDescending(Ticket::validFrom))
+
+                for (t in sorted) {
+                    val time = System.currentTimeMillis()
+                    if ( t.validTill < time) {
+                        newTickets.add(t)
+                    }
+                }
+
+                tickets.value = newTickets
             }
         })
         return tickets

@@ -57,10 +57,12 @@ class CurrentTicketPreview : AppCompatActivity() {
         if (it != null) {
             hideLoading()
 
-            id_current_preview_code.text = it.columnBody
-            id_current_preview_type.text = it.id
+//            id_current_preview_code.text = it.
+            id_current_preview_type.text = applicationContext.getString(R.string.string_type_of_ticket)
             id_current_preview_price.text = it.price
             id_current_preview_code.text = it.ticketCode
+
+            Barcoder.fillViewWithBarcodeFromString(id_current_preview_received_ticket_QR, it.id)
 
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -73,11 +75,6 @@ class CurrentTicketPreview : AppCompatActivity() {
 
                 id_current_preview_valid_from.text = Timestamp(it.validFrom).time.toString()
                 id_current_preview_valid_till.text = Timestamp(it.validTill).time.toString()
-                id_current_preview_received_ticket_QR.setImageBitmap(
-                    Barcoder.createQrCodeFromString(
-                        it.id
-                    )
-                )
             }
         } else {
             showLoading()

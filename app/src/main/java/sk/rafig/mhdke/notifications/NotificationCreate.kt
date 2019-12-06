@@ -22,8 +22,8 @@ class NotificationCreate(private val context: Context, private val CHANNEL_ID: S
         return builder.build()
     }
 
-    fun countDownNotification(timeString: String, id: Int): Notification {
-        val builder = baseBuilder("TimeLeft", timeString)
+    fun countDownNotification(title: String, timeString: String, id: Int): Notification {
+        val builder = baseBuilder(title, timeString)
             .setOnlyAlertOnce(true)
 
         showNotification(builder, id)
