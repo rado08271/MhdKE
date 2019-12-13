@@ -16,7 +16,6 @@ class TicketFragment{
             view.id_ticket_fragment_price.text = ticket.price
             view.id_ticket_fragment_code.text = ticket.ticketCode
 
-
 //            view.id_ticket_fragment_valid_till.text = ticket.validTill
 //
 //            view.id_ticket_fragment_valid_from.text = ticket.validFrom

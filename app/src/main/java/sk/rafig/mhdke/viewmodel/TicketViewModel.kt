@@ -6,13 +6,15 @@ import android.icu.util.Calendar
 import android.os.Build
 import android.os.Handler
 import android.telephony.SmsManager
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import com.google.android.gms.maps.model.LatLng
+import kotlinx.coroutines.*
+import kotlinx.coroutines.selects.select
 import sk.rafig.mhdke.api.local.Cache
 import sk.rafig.mhdke.api.UserServiceFirebase
 import sk.rafig.mhdke.api.local.TicketRepository
@@ -20,10 +22,7 @@ import sk.rafig.mhdke.api.local.UserRepository
 import sk.rafig.mhdke.di.Injection
 import sk.rafig.mhdke.model.Ticket
 import sk.rafig.mhdke.ui.ActiveTicketActivity
-import sk.rafig.mhdke.util.ContextTags
-import sk.rafig.mhdke.util.SmsSpecs
-import sk.rafig.mhdke.util.TicketParser
-import sk.rafig.mhdke.util.TimeUtil
+import sk.rafig.mhdke.util.*
 import kotlin.coroutines.CoroutineContext
 
 class TicketViewModel(private val application: Application) : ViewModel() {
@@ -73,5 +72,14 @@ class TicketViewModel(private val application: Application) : ViewModel() {
             MutableLiveData<Boolean>(false)
 
         }
+    }
+
+    fun getCity(latLng: LatLng): LiveData<String> {
+        var city: String? = null
+        //crate new thread...
+
+        city = Locator.getCityFromLatLng(application.applicationContext, latLng)
+
+        return MutableLiveData<String>(city)
     }
 }

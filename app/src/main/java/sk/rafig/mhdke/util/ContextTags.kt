@@ -9,7 +9,8 @@ object ContextTags {
     const val TICKET_ENDS = "TICKET_END"
     const val TICKET_RECEIVED = "TICKET_RECEIVED"
     const val SHOW_DIALOG = "SHOW_DIALOG"
-    const val TIME_LEFT = "TIME_LEFT"
+    const val CURRENT_CITY = "CURRENT_CITY"
 
     const val HISTORY_TICKET_ID = "HISTORY_TICKET_ID"
+    const val GPS_ALLOWED = "GPS_ALLOWED"
 }

@@ -1,6 +1,7 @@
 package sk.rafig.mhdke.ui
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import sk.rafig.mhdke.viewmodel.AllowViewModel
 import sk.rafig.mhdke.ui.toolbar.CustomToolbar
 import sk.rafig.mhdke.ui.toolbar.ToolbarColor
+import sk.rafig.mhdke.util.ContextTags
 import sk.rafig.mhdke.viewmodel.ViewModelFactory
 
 
@@ -34,17 +36,15 @@ class AllowActivity : AppCompatActivity() {
 
         viewModel = ViewModelProviders.of(this, ViewModelFactory(application)).get(AllowViewModel::class.java)
 
-
         val checkVal = checkCallingOrSelfPermission(SEND_PERMISSION)
 
         if (checkVal == PackageManager.PERMISSION_GRANTED) {
-            startActivity(Intent(applicationContext, TicketActivity::class.java))
+            startActivity(Intent(applicationContext, AllowLocationActivity::class.java))
         }
-
 
         allow_agree.setOnClickListener{
             Dexter.withActivity(this)
-                .withPermissions(SEND_PERMISSION, RECEIVE_PERMISSION )
+                .withPermissions(SEND_PERMISSION, RECEIVE_PERMISSION)
                 .withListener(object: MultiplePermissionsListener {
                     override fun onPermissionRationaleShouldBeShown(
                         permissions: MutableList<PermissionRequest>?,
@@ -55,17 +55,15 @@ class AllowActivity : AppCompatActivity() {
 
                     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
                         if (report!!.areAllPermissionsGranted() ) {
-                            startActivity(Intent(applicationContext, TicketActivity::class.java))
+                            startActivity(Intent(applicationContext, AllowLocationActivity::class.java))
                         } else {
                             startActivity(Intent(applicationContext, OopsActivity::class.java))
                         }
+
                     }
 
                 })
                 .check()
         }
-
     }
-
-
 }

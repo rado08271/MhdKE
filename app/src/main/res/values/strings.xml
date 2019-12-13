@@ -1,39 +1,46 @@
 <resources>
     <string name="app_name">Tiket</string>
+    <string name="name_app" translatable="false">TIKET</string>
+    <string name="api_key_geolocation" translatable="false">AIzaSyA1SnYkQUlWlgR6iq8Kt4MABqPht-7wx-A</string>
+    <string name="string_activity_ticket_default_time" translatable="false">60:00</string>
+    <string name="string_activity_legal_gdpr" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="name_app" translatable="false">TIKET</string>
-    <string name="tiket_about_short_info">Ticket je aplikácia, s ktorou je nákup lístka rýchly a jednoduchý. Všetko máte pod palcom na jeden klik!
-    </string>
-    <string name="gdpr_title">Zásady ochrany osobných údajov GDPR</string>
-    <string name="allow_access_sms">K použivaniu aplikáce potrebujeme povoliť prístup k posielaniu SMS správ.</string>
-    <string name="allow_access">Povoliť prístup</string>
-    <string name="close_app">Zavrieť aplikáciu</string>
-    <string name="oops_text">Šmaria! Obávam sa, že bez povolenia prístupu k SMS nemôže aplikácia fungovať.</string>
-    <string name="ticket_buy">Kúpiť lístok</string>
-    <string name="ticket_sms_send">Stlačením tlačidla bude odoslaná prázdna SMS na tel. číslo 1166.</string>
-    <string name="ticket_sms_press">Stlačením tlačidla zobrazíte aktuálny lístok revízorovi</string>
-    <string name="ticket_sms_price">Cena SMS: 1,10 EUR</string>
-    <string name="ticket_ticket_active">Aktívny lístok</string>
-    <string name="allow_agree">Povoliť</string>
-    <string name="legal_agree">Súhlasím</string>
-    <string name="legal_toast_error">Prepacte ale pre nás slúži vas suhlas sluzi ako právny základ, fungujeme na etických princípoch!</string>
-    <string name="string_activity_ticket_default_time" translatable="false">60:00</string>
-    <string name="string_activity_ticket_ticket_to_show">Zobraziť lístok</string>
-    <string name="string_activity_ticket_ticket_waiting_for">Váš lístok je na ceste…</string>
-    <string name="string_activity_legal_gdpr" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-    <string name="string_activity_preview_expired_ticket">Expirovaný lístok</string>
-    <string name="string_activity_ticket_history">Historia listkov</string>
-    <string name="string_fragment_ticket_type">Typ:</string>
-    <string name="string_fragment_ticket_price">Cena:</string>
-    <string name="string_notification_expired_titlte">Expirovaný</string>
-    <string name="string_notification_expired_text">Tvoj lístok expiroval, prosíme kíp si nový lístok</string>
-    <string name="string_notification_to_expire_title">Aktívny</string>
-    <string name="string_notification_to_expire_text">Zostíva 5 minút do expirácie lístka</string>
-    <string name="string_type_of_ticket">Prestupný lístok</string>
-    <string name="string_dialog_dont_again">Už nechcem vidieť toto okno!</string>
-    <string name="string_dialog_ok">Pošli</string>
-    <string name="string_dialog_cancel">Zruš</string>
-    <string name="string_dialog_title">Chceš poslať sms?</string>
-
+    <string name="allow_access">Allow access</string>
+    <string name="allow_access_sms">By using this application you need to allow access for sending SMS</string>
+    <string name="allow_agree">Agree</string>
+    <string name="close_app">Close Tiket</string>
+    <string name="gdpr_title">General Data Protection Regulation GDPR</string>
+    <string name="legal_agree">Agree</string>
+    <string name="legal_toast_error">Sorry, but for us your consent is used as legal basis, we are exceptionally ethical!</string>
+    <string name="oops_text">OMG! I am concerned, that without your consent to use SMS, our app can not work correctly.</string>
+    <string name="string_activity_preview_expired_ticket">Exired ticket</string>
+    <string name="string_activity_ticket_ticket_to_show">Ticket</string>
+    <string name="string_activity_ticket_ticket_waiting_for">Your ticket is coming...</string>
+    <string name="ticket_buy">Buy ticket</string>
+    <string name="ticket_sms_press">By pressing this button you will show current ticket to inspector</string>
+    <string name="ticket_sms_price">Price of SMS: %1$s EUR</string>
+    <string name="ticket_ticket_active">Current ticket</string>
+    <string name="tiket_about_short_info">Tiket is an app, which makes buying your transportation ticket quick and easy. Everything is one click away!</string>
+    <string name="string_activity_ticket_history">Ticket history</string>
+    <string name="string_dialog_cancel">Cancel</string>
+    <string name="string_dialog_dont_again">Don\'t show again</string>
+    <string name="string_dialog_ok">Send</string>
+    <string name="string_dialog_title">Do you want to send SMS?</string>
+    <string name="string_fragment_ticket_price">Price:</string>
+    <string name="string_fragment_ticket_type">Type:</string>
+    <string name="string_notification_expired_text">Your ticket has expired, please buy a new one</string>
+    <string name="string_notification_expired_titlte">Expired</string>
+    <string name="string_notification_to_expire_text">There is 5 minutes left for ticket to expire</string>
+    <string name="string_notification_to_expire_title">Running</string>
+    <string name="string_type_of_ticket">Through ticket</string>
+    <string name="string_activity_allow_location_title">Consider allowing access to location, you will enjoy our app with better experience, we do not collect data about location</string>
+    <string name="string_activity_ticket_alowed">You are currently at</string>
+    <string name="string_activity_ticket_change_title">Click to change it</string>
+    <string name="string_activity_ticket_not_allowed">Location acces is not allowed</string>
+    <string name="string_activity_ticket_not_implemented">This city is not available for Tiket</string>
+    <string name="string_ticket_activity_loading_city">Loading...</string>
+    <string name="string_allow_location_activity_turn_gps_negative">No</string>
+    <string name="string_allow_location_activity_turn_gps_positive">Yes</string>
+    <string name="string_allow_location_activity_turn_gps_title">Turn GPS on?</string>
 </resources>

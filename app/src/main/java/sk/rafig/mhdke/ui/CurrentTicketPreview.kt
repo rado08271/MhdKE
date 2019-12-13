@@ -62,8 +62,7 @@ class CurrentTicketPreview : AppCompatActivity() {
             id_current_preview_price.text = it.price
             id_current_preview_code.text = it.ticketCode
 
-            Barcoder.fillViewWithBarcodeFromString(id_current_preview_received_ticket_QR, it.id)
-
+            Barcoder.fillViewWithBarcodeFromString(id_current_preview_received_ticket_QR, it.ticketCode)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 id_current_preview_valid_from.text =

@@ -86,7 +86,7 @@ public class SmsReciever extends BroadcastReceiver {
                 String body = msgs[i].getMessageBody();
                 // Log and display the SMS message.
 
-                if (SmsSpecs.serviceProviderNumber.equals(number)) {
+                if (SmsSpecs.INSTANCE.getServiceProviderNumber().equals(number)) {
                     if (onReceiveListener != null) {
                         onReceiveListener.onTextReceived(body);
                     } else {
